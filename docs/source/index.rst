@@ -11,9 +11,10 @@ Here is some simple stuff.
     >> hello
 
 .. toctree::
-   :maxdepth: 2
-      source/spe-c-g0070.rst
-      source/contents.rst
+   :maxdepth: 1
+
+   spe-c-g0070
+   contents
 
 
 Indices and tables
