@@ -1,2 +1,2 @@
-Cntents
+Contents
 =============
