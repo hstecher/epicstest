@@ -1,0 +1,7275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>spe-c-g0070</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="createdjune-25-1996-modifiedfebruary-3-1997">Created:June 25, 1996 Modified:February 3, 1997</h1>
+<table>
+<tbody>
+<tr class="odd">
+<td><p><strong>Gemini</strong></p>
+<p><strong>Controls</strong></p>
+<p><strong>Group</strong></p>
+<p><strong>Report</strong></p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Gemini Record Reference Manual</p>
+</blockquote>
+<h1 id="bret-goodrich-and-andy-foster">Bret Goodrich and Andy Foster</h1>
+<blockquote>
+<p>SPE-C-G0070/02</p>
+<p><strong>This document decribes the EPICS records created by the Gemini Project.</strong></p>
+</blockquote>
+<h1 id="introduction....................................................................................3"> 1.0 Introduction....................................................................................3</h1>
+<p>1.1 Purpose ..............................................................................................................3</p>
+<p>1.2 Scope..................................................................................................................3</p>
+<blockquote>
+<p>1.3 References..........................................................................................................3 1.4 Revisions............................................................................................................3</p>
+</blockquote>
+<h1 id="apply---apply-record.....................................................................4"> 2.0 apply - Apply Record.....................................................................4</h1>
+<blockquote>
+<p>2.1 Field Summary...................................................................................................4 2.2 Field Descriptions..............................................................................................5</p>
+</blockquote>
+<p>2.3 Record Support Routines...................................................................................5</p>
+<p>2.4 Record Processing .............................................................................................6</p>
+<blockquote>
+<p>2.5 Device Support ..................................................................................................6 2.6 CapFast ..............................................................................................................6</p>
+</blockquote>
+<h1 id="cad---command-action-directive-record-.................................7"> 3.0 CAD - Command Action Directive Record .................................7</h1>
+<blockquote>
+<p>3.1 Field Summary...................................................................................................8 3.2 Field Descriptions..............................................................................................9</p>
+</blockquote>
+<p>3.3 Record Support Routines.................................................................................10</p>
+<p>3.4 Record Processing ...........................................................................................11</p>
+<blockquote>
+<p>3.5 Device Support ................................................................................................12 3.6 CapFast ............................................................................................................12</p>
+</blockquote>
+<h1 id="car---command-action-response-record...............................13"> 4.0 CAR - Command Action Response Record...............................13</h1>
+<blockquote>
+<p>4.1 Field Summary.................................................................................................14 4.2 Field Descriptions............................................................................................14</p>
+</blockquote>
+<p>4.3 Record Support Routines.................................................................................15</p>
+<p>4.4 Record Processing ...........................................................................................16</p>
+<h2 id="gemini-record-reference-manual-spe-c-g007002-1-of-49-table-of-contents">Gemini Record Reference Manual SPE-C-G0070/02 1 of 49 Table Of Contents</h2>
+<blockquote>
+<p>4.5 Device Support.................................................................................................16 4.6 CapFast ............................................................................................................16</p>
+</blockquote>
+<h1 id="sir---status-information-record................................................17"> 5.0 SIR - Status Information Record................................................17</h1>
+<blockquote>
+<p>5.1 Field Summary.................................................................................................18 5.2 Field Descriptions............................................................................................19</p>
+</blockquote>
+<p>5.3 Record Support Routines.................................................................................20</p>
+<p>5.4 Record Processing............................................................................................21</p>
+<blockquote>
+<p>5.5 Device Support.................................................................................................21 5.6 CapFast ............................................................................................................21</p>
+</blockquote>
+<h1 id="lutout---lookup-table-output-record-.......................................22"> 6.0 lutout - Lookup Table Output Record .......................................22</h1>
+<p>6.1 Field Summary.................................................................................................23</p>
+<p>6.2 Field Description..............................................................................................23</p>
+<p>6.3 Record Support Routines.................................................................................25</p>
+<p>6.4 Record Processing............................................................................................25</p>
+<p>6.5 Device Support.................................................................................................26</p>
+<blockquote>
+<p>6.6 CapFast ............................................................................................................26 6.7 Future Enhancements.......................................................................................26</p>
+</blockquote>
+<h1 id="lutin---lookup-table-input-record-............................................27"> 7.0 lutin - Lookup Table Input Record ............................................27</h1>
+<p>7.1 Field Summary.................................................................................................27</p>
+<p>7.2 Field Description..............................................................................................28</p>
+<p>7.3 Record Support Routines.................................................................................29</p>
+<p>7.4 Record Processing............................................................................................30</p>
+<p>7.5 Device Support.................................................................................................30</p>
+<blockquote>
+<p>7.6 CapFast ............................................................................................................30 7.7 Future Enhancements.......................................................................................31</p>
+</blockquote>
+<h1 id="mosub---multiple-output-subroutine-record-...........................32"> 8.0 mosub - Multiple Output Subroutine Record ...........................32</h1>
+<p>8.1 Introduction......................................................................................................32</p>
+<blockquote>
+<p>8.2 Field Summary.................................................................................................33 8.3 Field Descriptions............................................................................................36 8.4 Record Support Routines.................................................................................37</p>
+</blockquote>
+<h1 id="gensub---the-general-subroutine-record-...............................39"> 9.0 GenSub - The General Subroutine Record ...............................39</h1>
+<p>9.1 Introduction......................................................................................................39</p>
+<blockquote>
+<p>9.2 Field Summary.................................................................................................40 9.3 Field Descriptions............................................................................................44</p>
+</blockquote>
+<p>9.4 Record Support Routines.................................................................................45</p>
+<blockquote>
+<p>9.5 Use of the ‘GenSub’ Record............................................................................47 9.6 Use of User Defined Structures........................................................................47</p>
+</blockquote>
+<p>9.7 Dynamically Changing the User Routine called during Record Processing ...49</p>
+<blockquote>
+<p><strong>Introduction</strong></p>
+</blockquote>
+<h2 id="introduction">1.0 Introduction</h2>
+<h3 id="purpose"> 1.1 Purpose</h3>
+<blockquote>
+<p>This document describes the EPICS records created by the Gemini 8M Telescopes Project for use in its telescope and instrument control databases.</p>
+</blockquote>
+<h3 id="scope"> 1.2 Scope</h3>
+<p>This document defines the interface to only those records created by and for the Gemini Project. For a complete list of the standard EPICS records, and a description of the field summary tables, refer to the <em>EPICS Input Output Controller Record Reference Manual</em> [1].</p>
+<h3 id="references"> 1.3 References</h3>
+<ol type="1">
+<li><p><em>EPICS Input Output Controller Record Reference Manual</em>, Janet B. Anderson and Martin R. Kraimer, Argonne National Laboratory, Dec 1, 1994.</p></li>
+<li><p><em>ICD 1b — The Baseline Attribute/Value Interface</em> (gscg.grp.024/04), Kim Gillies, Steve Wampler, Bret Goodrich.</p></li>
+<li><p><em>EPICS Lookup Table Records</em> (gscg.bdg.003.lut/1), Bret Goodrich.</p></li>
+<li><p><em>The ‘mosub’ EPICS Record Reference Manual</em>, Andy Foster.</p></li>
+<li><p><em>The ‘genSub’ EPICS Record Reference Manual</em>, Andy Foster.</p></li>
+</ol>
+<h3 id="revisions"> 1.4 Revisions</h3>
+<ol type="1">
+<li><p>Version 01, 8 November, 1996. Document created.</p></li>
+<li><p>Version 02, February 3, 1997, Updated genSub section.</p></li>
+</ol>
+<h2 id="apply---apply-record">2.0 apply - Apply Record</h2>
+<blockquote>
+<p>The apply record executes data links to other records. Its primary purpose is to process CAD records in a fixed order, and return the results of processing those records. There may be up to eight sets of links to other records. The links in each set pass the directive field (DIR to OUTA through OUTH) and client ID field (CLID to OCLA through OCLH), and receive the result value (INPA through INPH to VAL) and error message (INMA through INMH to MESS).</p>
+<p>The apply record accepts the same directives as the CAD, namely: MARK, CLEAR, PRESET, START, and STOP. Writing a value to the directive field (DIR) starts the processing of the record and subsequent processing of all attached records. Writing the START directive forces the PRESET directive to be sent to all links before the START directive is sent. This insures that all CAD records linked to the apply record have valid arguments.</p>
+<p>Values returned through the INPx links are inspected by the apply record for non-zero results. If any link returns a non-zero value, the associated INMx link is read. The error value and error message are copied to the VAL and MESS fields, monitors are posted, and the processing halts. No further links are processed once an error has been returned.</p>
+<p>The use of the apply record is required for all principal systems databases, including the TCS, CICS, and all instruments. There must be one, and only one, top level apply record in the database, although there may be cascaded apply records. All principal systems CAD records must be linked to the apply record and must be processed through this record. Links from the apply record outputs may go to records other than CAD records, such as calc, sub, or mosub records.</p>
+</blockquote>
+<h3 id="field-summary"> 2.1 Field Summary</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><p><strong>Rec Proc</strong></p>
+<p><strong>Monitor</strong></p></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>DIR</td>
+<td>RECCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>CLID</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MESS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTx</td>
+<td>OUTLINK</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OCLx</td>
+<td>OUTLINK</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPx</td>
+<td>INLINK</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INMx</td>
+<td>INLINK</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-descriptions"> 2.2 Field Descriptions</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>Value</td>
+<td>This is the return value from the input links. If any link returns a non-zero, processing stops and the last value is returned.</td>
+</tr>
+<tr class="even">
+<td>DIR</td>
+<td>Directive</td>
+<td>This value of this field is passed to all OUTx output links. If the directive is START, the directive PRESET is first passed to all output links.</td>
+</tr>
+<tr class="odd">
+<td>CLID</td>
+<td>Client ID</td>
+<td>This number is incremented every time a directive is loaded. The value is passed to all OCLx output links.</td>
+</tr>
+<tr class="even">
+<td>MESS</td>
+<td>Message</td>
+<td>This is the return message from an INMx input link. If the return value is 0, this field is empty. Otherwise, it reads the error message from the INMx link.</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>Old Message</td>
+<td>This is the old message string.</td>
+</tr>
+<tr class="even">
+<td>OUTx</td>
+<td><p>Output</p>
+<p>directive link</p></td>
+<td>There are eight output links OUTA-OUTH which pass the value of the DIR field to a record field.</td>
+</tr>
+<tr class="odd">
+<td>OCLx</td>
+<td><p>Output client</p>
+<p>ID link</p></td>
+<td>There are eight output links OUMA-OUMH which pass the value of the CLID field to a record field.</td>
+</tr>
+<tr class="even">
+<td>INPx</td>
+<td>Input result link</td>
+<td>There are eight input links INPA-INPH which read a value from a record field. A non-zero value halts the processing sequence.</td>
+</tr>
+<tr class="odd">
+<td>INMx</td>
+<td>Input message link</td>
+<td>There are eight input links INMA-INMH which read a value from a record field. The link is read only for the corresponding INPx link which returned a non-zero value.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines"> 2.3 Record Support Routines</h3>
+<h4 id="init_record"> 2.3.1 init_record</h4>
+<blockquote>
+<p>This routine initializes the apply record. All OUTx links are forced to be process passive; all OUMx, INPx, and INMx links are forced to be non-process passive.</p>
+</blockquote>
+<p><strong>2.3.2 process</strong></p>
+<blockquote>
+<p>See the next section.</p>
+</blockquote>
+<p><strong>2.3.3 get_value</strong></p>
+<blockquote>
+<p>This routine fills the values of struct valueDes so that they refer to VAL.</p>
+</blockquote>
+<h4 id="get_enum_str"> 2.3.4 get_enum_str</h4>
+<blockquote>
+<p>This routine converts the long integer values 0 through 4 into the strings “MARK”, “CLEAR”, PRESET”, “START”, and “STOP”, respectively.</p>
+</blockquote>
+<p><strong>2.3.5 get_enum_strs</strong></p>
+<blockquote>
+<p>This routine returns all five of the above strings.</p>
+</blockquote>
+<p><strong>2.3.6 put_enum_str</strong></p>
+<blockquote>
+<p>This routine converts the above strings into the long integer values 0 through 4.</p>
+</blockquote>
+<h3 id="record-processing"> 2.4 Record Processing</h3>
+<blockquote>
+<p>This routine processes the record whenever requested. Processing will occur whenever a value is written to the DIR field.</p>
+</blockquote>
+<ul>
+<li><p>All MARK directives are ignored and processing exits.</p></li>
+<li><p>The return message field is cleared.</p></li>
+<li><p>If the directive is START:</p></li>
+</ul>
+<blockquote>
+<p><strong>—</strong>increment the client ID,</p>
+<p><strong>—</strong>recursively call this procedure with PRESET, <strong>—</strong>exit if an error occurred during PRESET.</p>
+</blockquote>
+<ul>
+<li><p>for each existing set of links A-H:</p></li>
+</ul>
+<blockquote>
+<p><strong>—</strong>send CLID and DIR to OCLx and OUTx links,</p>
+<p><strong>—</strong>get VAL from INPx link,</p>
+<p><strong>—</strong>if VAL is non-zero, get MESS from OUMx link and stop looping</p>
+</blockquote>
+<ul>
+<li><p>post monitor on VAL field.</p></li>
+<li><p>if VAL is non-zero and MESS is different than OMSS:</p></li>
+</ul>
+<blockquote>
+<p><strong>—</strong>post monitor on MESS field.</p>
+</blockquote>
+<p><strong>2.5 Device Support</strong></p>
+<blockquote>
+<p>There is no device support available.</p>
+</blockquote>
+<h3 id="capfast"> 2.6 CapFast</h3>
+<blockquote>
+<p>There is one CapFast symbol for the Apply record.</p>
+</blockquote>
+<p><strong>FIGURE 1.</strong> CapFast <em>eapply</em> symbol</p>
+<blockquote>
+<p>.</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>SLNK</p>
+</blockquote></th>
+<th><p>apply</p>
+<blockquote>
+<p>.</p>
+<p>.</p>
+</blockquote></th>
+<th>FLNK</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>DIR</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>VAL</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>CLID</p>
+</blockquote></td>
+<td></td>
+<td>MESS</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPA</p>
+</blockquote></td>
+<td></td>
+<td>OUTA</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INMA</p>
+</blockquote></td>
+<td></td>
+<td>OCLA</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPB</p>
+</blockquote></td>
+<td></td>
+<td>OUTB</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INMB</p>
+</blockquote></td>
+<td></td>
+<td>OCLB</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPC</p>
+</blockquote></td>
+<td></td>
+<td>OUTC</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INMC</p>
+</blockquote></td>
+<td></td>
+<td>OCLC</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPD</p>
+</blockquote></td>
+<td></td>
+<td>OUTD</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INMD</p>
+</blockquote></td>
+<td></td>
+<td>OCLD</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPE</p>
+</blockquote></td>
+<td></td>
+<td>OUTE</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INME</p>
+</blockquote></td>
+<td></td>
+<td>OCLE</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPF</p>
+</blockquote></td>
+<td></td>
+<td>OUTF</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INMF</p>
+</blockquote></td>
+<td></td>
+<td>OCLF</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPG</p>
+</blockquote></td>
+<td></td>
+<td>OUTG</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INMG</p>
+</blockquote></td>
+<td></td>
+<td>OCLG</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPH</p>
+</blockquote></td>
+<td></td>
+<td>OUTH</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>INMH</p>
+</blockquote></td>
+<td></td>
+<td>OCLH</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>.</p>
+</blockquote>
+<h2 id="cad---command-action-directive-record">3.0 CAD - Command Action Directive Record</h2>
+<blockquote>
+<p>The CAD record initiates processing of Gemini commands. Attributes of the command are either loaded into fields A through T, or read from input links INPA through INPT. Processing begins when a directive is received in the DIR field. Subroutine calls may be made during initialization and processing. Each directive also has an associated link which is processed when the directive is received. A return value from the processing subroutine is returned in the VAL field.</p>
+<p>There are five valid directives: MARK, CLEAR, PRESET, START, and STOP. The MARK directive forces the CAD state machine into state 1. This directive is also executed through special processing if any of fields A through T are modified. The CLEAR directive forces the state machine into state 0, clearing any prior mark or preset. The PRESET directive moves the state machine from state 1 to state 2. The START directive either moves the state machine from state 2 to state 0, or executes a PRESET directive then moves from state 2 to state 0. In all cases except PRESET, START, and STOP in state 0 the processing subroutine SNAM is called and the corresponding directive link is processed.</p>
+<p>The CAD record can be in one of three states, given by the value of the MARK field. In state 0, the CAD record is considered to be cleared. In state 1, it is considered to be marked as ready to preset. In state 2, it is considered to be preset and ready to activate. Figure 1 shows the state diagram for the CAD record, with the edges identified as possible directive commands.</p>
+<p>(2) PRESET call and link processed first.</p>
+</blockquote>
+<h3 id="field-summary-1">3.1 Field Summary</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SNAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SADR</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>STYP</td>
+<td>SHORT</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>DIR</td>
+<td>RECCHOICE</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>ICID</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MESS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>CTYP</td>
+<td>SHORT</td>
+<td>Yes</td>
+<td>2</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td>SHORT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MLNK</td>
+<td>FWDLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>CLNK</td>
+<td>FWDLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>PLNK</td>
+<td>FWDLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>STLK</td>
+<td>FWDLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SPLK</td>
+<td>FWDLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OCID</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OSIM</td>
+<td>RECCHOICE</td>
+<td>No</td>
+<td>None</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NARG</td>
+<td>SHORT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MARK</td>
+<td>SHORT</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>ERSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>SIOL</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SVAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SIMM</td>
+<td>RECCHOICE</td>
+<td>No</td>
+<td>None</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SIMS</td>
+<td>GBLCHOICE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPx</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTx</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>A - T</td>
+<td>STRING</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Spec</td>
+</tr>
+<tr class="even">
+<td>VALx</td>
+<td>NOACCESS</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVx</td>
+<td>GBLCHOICE</td>
+<td>No</td>
+<td>String</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-descriptions-1"> 3.2 Field Descriptions</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td><p>Return Error</p>
+<p>Code</p></td>
+<td>The return value is set within the user-supplied processing subroutine. Conventionally, a return value of zero indicates success, while a non-zero value shows an error has occurred.</td>
+</tr>
+<tr class="even">
+<td>SNAM</td>
+<td><p>Subroutine</p>
+<p>Name</p></td>
+<td>The name of a VxWorks subroutine to execute during processing.</td>
+</tr>
+<tr class="odd">
+<td>SADR</td>
+<td><p>Subroutine</p>
+<p>Address</p></td>
+<td>The internal representation of the subroutine address.</td>
+</tr>
+<tr class="even">
+<td>STYP</td>
+<td>Subroutine symbol type</td>
+<td>Not used.</td>
+</tr>
+<tr class="odd">
+<td>INAM</td>
+<td><p>Init Routine</p>
+<p>Name</p></td>
+<td>The name of a VxWorks subroutine to execute during initialization.</td>
+</tr>
+<tr class="even">
+<td>DIR</td>
+<td>CAD Directive</td>
+<td>The directive to execute. This may be one of the following enumerated list values: MARK, CLEAR, PRESET, START, or STOP.</td>
+</tr>
+<tr class="odd">
+<td>ICID</td>
+<td>Client ID (In)</td>
+<td>An integer value to be associated with the current command.</td>
+</tr>
+<tr class="even">
+<td>MESS</td>
+<td>Message</td>
+<td>A return message from the CAD. This string will be empty if the return value is zero.</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>Old Message</td>
+<td>The previous message.</td>
+</tr>
+<tr class="even">
+<td>CTYP</td>
+<td><p>Number of</p>
+<p>CAD Args</p></td>
+<td>This value should be set to the maximum number of arguments a CAD record will use. The value is usually set by the selected CapFast symbol.</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td><p>Display</p>
+<p>Precision</p></td>
+<td>This value is used for the precision of double-precision outputs.</td>
+</tr>
+<tr class="even">
+<td>MLNK</td>
+<td>Mark Link</td>
+<td>If the directive is MARK, this forward link is processed.</td>
+</tr>
+<tr class="odd">
+<td>CLNK</td>
+<td>Clear Link</td>
+<td>If the directive is CLEAR, this forward link is processed.</td>
+</tr>
+<tr class="even">
+<td>PLNK</td>
+<td>Preset Link</td>
+<td>If the directive is PRESET, this forward link is processed.</td>
+</tr>
+<tr class="odd">
+<td>STLK</td>
+<td>Start Link</td>
+<td>If the directive is START, this forward link is processed.</td>
+</tr>
+<tr class="even">
+<td>SPLK</td>
+<td>Stop Link</td>
+<td>If the directive is STOP, this forward link is processed.</td>
+</tr>
+<tr class="odd">
+<td>OCID</td>
+<td>Client ID (Out)</td>
+<td>The input client ID is sent out this field.</td>
+</tr>
+<tr class="even">
+<td>OSIM</td>
+<td><p>Simulation</p>
+<p>Mode (Out)</p></td>
+<td>The simulation mode is sent out this field.</td>
+</tr>
+<tr class="odd">
+<td>NARG</td>
+<td>No. Inputs used</td>
+<td>The actual number of arguments used is set in this field.</td>
+</tr>
+<tr class="even">
+<td>MARK</td>
+<td>Is Record Preset?</td>
+<td>This field shows the current state of the CAD. It can be zero, indicating no MARK has been done; one, showing a MARK; or two, showing a PRESET has been done.</td>
+</tr>
+<tr class="odd">
+<td>ERSV</td>
+<td><p>Error Alarm</p>
+<p>Severity</p></td>
+<td>The severity of an alarm.</td>
+</tr>
+<tr class="even">
+<td>SIOL</td>
+<td><p>Simulation</p>
+<p>Error Link</p></td>
+<td>Simulation mode variables. Refer to reference [1], chapter 3.</td>
+</tr>
+<tr class="odd">
+<td>SVAL</td>
+<td><p>Simulation</p>
+<p>Error</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SIML</td>
+<td><p>Simulation</p>
+<p>Mode Link</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SIMM</td>
+<td><p>Simulation</p>
+<p>Mode</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SIMS</td>
+<td><p>Simulation</p>
+<p>Mode Alarm</p>
+<p>Severity</p></td>
+<td>The value for the simulated alarm.</td>
+</tr>
+<tr class="even">
+<td>INPx</td>
+<td>Input Link A-T</td>
+<td>The 20 input links for the arguments to the record.</td>
+</tr>
+<tr class="odd">
+<td>OUTx</td>
+<td><p>Output Link A-</p>
+<p>T</p></td>
+<td>The 20 outputs are sent across these links.</td>
+</tr>
+<tr class="even">
+<td>A - T</td>
+<td><p>Value of Input</p>
+<p>A-T</p></td>
+<td>The 20 string input arguments.</td>
+</tr>
+<tr class="odd">
+<td>VALx</td>
+<td><p>Value of Output</p>
+<p>A-T</p></td>
+<td>The 20 output values.</td>
+</tr>
+<tr class="even">
+<td>FTVx</td>
+<td><p>Type of Value</p>
+<p>A-T</p></td>
+<td><p>The types for the 20 output values. The type may be one of</p>
+<p>STRING, LONG, or DOUBLE.</p></td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines-1"> 3.3 Record Support Routines</h3>
+<h4 id="init_record-1"> 3.3.1 init_record</h4>
+<blockquote>
+<p>During the first initialization pass, the output types are determined from the FTVx fields and appropriate space is created for the VALx fields. During the second pass, input and output links are initialized, the initialization routine is called, and the processing subroutine is readied. The directive field is set to CLEAR, and the mark field is set to zero.</p>
+</blockquote>
+<p><strong>3.3.2 process</strong></p>
+<blockquote>
+<p>See the next section.</p>
+</blockquote>
+<h4 id="special"> 3.3.3 special</h4>
+<blockquote>
+<p>The special processing is called when a value is put to one of the twenty fields A through T. The mark flag is set to one.</p>
+</blockquote>
+<p><strong>3.3.4 get_value</strong></p>
+<blockquote>
+<p>This routine fills the values of struct valueDes so that they refer to VAL.</p>
+</blockquote>
+<p><strong>3.3.5 get_precision</strong></p>
+<blockquote>
+<p>This routine retrieves PREC.</p>
+</blockquote>
+<h4 id="get_enum_str-1"> 3.3.6 get_enum_str</h4>
+<blockquote>
+<p>This routine converts the long integer values 0 through 4 into the strings “MARK”, “CLEAR”, PRESET”, “START”, and “STOP”, respectively.</p>
+</blockquote>
+<p><strong>3.3.7 get_enum_strs</strong></p>
+<blockquote>
+<p>This routine returns all five of the above strings.</p>
+</blockquote>
+<p><strong>3.3.8 put_enum_str</strong></p>
+<blockquote>
+<p>This routine converts the above strings into the long integer values 0 through 4.</p>
+</blockquote>
+<h3 id="record-processing-1"> 3.4 Record Processing</h3>
+<blockquote>
+<p>Record processing is very dependent upon the directive given to process and the value of the mark field in the state machine. The algorithm is:</p>
+</blockquote>
+<ul>
+<li><p>If PRESET, START, or STOP with MARK==0, then return</p></li>
+<li><p>If simulation, process simulation links.</p></li>
+<li><p>Process all input links.</p></li>
+<li><p>Process requested directive (see next sections for details).</p></li>
+<li><p>Enforce rule that MESS is empty if VAL is 0.</p></li>
+<li><p>Put the values on the output links.</p></li>
+<li><p>Raise monitors on fields VAL, MESS, OSIM, OCID, MARK.</p></li>
+<li><p>Process directive link (MLNK, CLNK, PLNK, STLK, SPLK).</p></li>
+<li><p>Process forward link.</p></li>
+</ul>
+<h4 id="mark-directive-processing"> 3.4.1 Mark Directive Processing</h4>
+<ul>
+<li><p>Call user subroutine, return value in VAL.</p></li>
+<li><p>Copy ICID to OCID.</p></li>
+<li><p>Set mark field to 1.</p></li>
+</ul>
+<h4 id="clear-directive-processing"> 3.4.2 Clear Directive Processing</h4>
+<ul>
+<li><p>Call user subroutine, return value in VAL.</p></li>
+<li><p>Copy ICID to OCID.</p></li>
+<li><p>Set mark field to 0.</p></li>
+</ul>
+<h4 id="preset-directive-processing"> 3.4.3 Preset Directive Processing</h4>
+<ul>
+<li><p>Call user subroutine, return value in VAL.</p></li>
+<li><p>Copy ICID to OCID.</p></li>
+<li><p>Set mark field to 2.</p></li>
+</ul>
+<h4 id="start-directive-processing"> 3.4.4 Start Directive Processing</h4>
+<ul>
+<li><p>If mark field is 1:</p></li>
+</ul>
+<blockquote>
+<p><strong>—</strong>set directive to PRESET.</p>
+<p><strong>—</strong>Call user subroutine, return value in VAL.</p>
+<p><strong>—</strong>Copy ICID to OCID.</p>
+<p><strong>—</strong>Process PLNK link.</p>
+<p><strong>—</strong>Set mark field to 2.</p>
+<p><strong>—</strong>Put the values on the output links.</p>
+<p><strong>—</strong>Raise monitors.</p>
+<p><strong>—</strong>set directive to START.</p>
+</blockquote>
+<ul>
+<li><p>Call user subroutine, return value in VAL.</p></li>
+<li><p>Copy ICID to OCID.</p></li>
+<li><p>Set mark field to 0.</p></li>
+</ul>
+<h4 id="stop-directive-processing"> 3.4.5 Stop Directive Processing</h4>
+<blockquote>
+<p><strong>•</strong> If mark field is not 0:</p>
+<p><strong>—</strong>Call user subroutine, return value in VAL.</p>
+<p><strong>—</strong>Copy ICID to OCID.</p>
+<p><strong>—</strong>Set mark field to 0.</p>
+</blockquote>
+<p><strong>3.5 Device Support</strong></p>
+<blockquote>
+<p>There is no device support available.</p>
+</blockquote>
+<h3 id="capfast-1"> 3.6 CapFast</h3>
+<blockquote>
+<p>There are four CapFast symbols for the CAD record.</p>
+</blockquote>
+<p><strong>FIGURE 3.</strong> CapFast <em>ecad2, ecad4, ecad8, and ecad20</em> symbols</p>
+<blockquote>
+<p>.</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>DIR</p>
+</blockquote></th>
+<th>cad</th>
+<th><blockquote>
+<p>VAL</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICID</td>
+<td></td>
+<td>MESS</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td></td>
+<td>MARK</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td></td>
+<td>OCID</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>A</p>
+</blockquote></td>
+<td></td>
+<td>OSIM</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>ODIR</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>VALA</td>
+</tr>
+<tr class="odd">
+<td>INPA</td>
+<td></td>
+<td>OUTA</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>B</p>
+</blockquote></td>
+<td></td>
+<td>VALB</td>
+</tr>
+<tr class="odd">
+<td>INPB</td>
+<td></td>
+<td>OUTB</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>C</p>
+</blockquote></td>
+<td></td>
+<td>VALC</td>
+</tr>
+<tr class="odd">
+<td>INPC</td>
+<td></td>
+<td>OUTC</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>D</p>
+</blockquote></td>
+<td></td>
+<td>VALD</td>
+</tr>
+<tr class="odd">
+<td>INPD</td>
+<td></td>
+<td>OUTD</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>E</p>
+</blockquote></td>
+<td></td>
+<td>VALE</td>
+</tr>
+<tr class="odd">
+<td>INPE</td>
+<td></td>
+<td>OUTE</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>F</p>
+</blockquote></td>
+<td></td>
+<td>VALF</td>
+</tr>
+<tr class="odd">
+<td>INPF</td>
+<td></td>
+<td>OUTF</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>G</p>
+</blockquote></td>
+<td></td>
+<td>VALG</td>
+</tr>
+<tr class="odd">
+<td>INPG</td>
+<td></td>
+<td>OUTG</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>H</p>
+</blockquote></td>
+<td></td>
+<td>VALH</td>
+</tr>
+<tr class="odd">
+<td>INPH</td>
+<td></td>
+<td>OUTH</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>I</p>
+</blockquote></td>
+<td></td>
+<td>VALI</td>
+</tr>
+<tr class="odd">
+<td>INPI</td>
+<td></td>
+<td>OUTI</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>J</p>
+</blockquote></td>
+<td></td>
+<td>VALJ</td>
+</tr>
+<tr class="odd">
+<td>INPJ</td>
+<td></td>
+<td>OUTJ</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>K</p>
+</blockquote></td>
+<td></td>
+<td>VALK</td>
+</tr>
+<tr class="odd">
+<td>INPK</td>
+<td></td>
+<td>OUTK</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>L</p>
+</blockquote></td>
+<td></td>
+<td>VALL</td>
+</tr>
+<tr class="odd">
+<td>INPL</td>
+<td></td>
+<td>OUTL</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>M</p>
+</blockquote></td>
+<td></td>
+<td>VALM</td>
+</tr>
+<tr class="odd">
+<td>INPM</td>
+<td></td>
+<td>OUTM</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>N</p>
+</blockquote></td>
+<td></td>
+<td>VALN</td>
+</tr>
+<tr class="odd">
+<td>INPN</td>
+<td></td>
+<td>OUTN</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>O</p>
+</blockquote></td>
+<td></td>
+<td>VALO</td>
+</tr>
+<tr class="odd">
+<td>INPO</td>
+<td></td>
+<td>OUTO</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>P</p>
+</blockquote></td>
+<td></td>
+<td>VALP</td>
+</tr>
+<tr class="odd">
+<td>INPP</td>
+<td></td>
+<td>OUTP</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Q</p>
+</blockquote></td>
+<td></td>
+<td>VALQ</td>
+</tr>
+<tr class="odd">
+<td>INPQ</td>
+<td></td>
+<td>OUTQ</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>R</p>
+</blockquote></td>
+<td></td>
+<td>VALR</td>
+</tr>
+<tr class="odd">
+<td>INPR</td>
+<td></td>
+<td>OUTR</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>S</p>
+</blockquote></td>
+<td></td>
+<td>VALS</td>
+</tr>
+<tr class="odd">
+<td>INPS</td>
+<td></td>
+<td>OUTS</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>T</p>
+</blockquote></td>
+<td></td>
+<td>VALT</td>
+</tr>
+<tr class="odd">
+<td>INPT</td>
+<td></td>
+<td>OUTT</td>
+</tr>
+<tr class="even">
+<td>SLNK</td>
+<td></td>
+<td>FLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>MLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>CLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>PLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>STLK</td>
+</tr>
+<tr class="odd">
+<td>SDIS</td>
+<td></td>
+<td>SPLK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>DIR</p>
+</blockquote></th>
+<th>cad</th>
+<th><blockquote>
+<p>VAL</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICID</td>
+<td></td>
+<td>MESS</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td></td>
+<td>MARK</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td></td>
+<td>OCID</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>A</p>
+</blockquote></td>
+<td></td>
+<td>OSIM</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>ODIR</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>VALA</td>
+</tr>
+<tr class="odd">
+<td>INPA</td>
+<td></td>
+<td>OUTA</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>B</p>
+</blockquote></td>
+<td></td>
+<td>VALB</td>
+</tr>
+<tr class="odd">
+<td>INPB</td>
+<td></td>
+<td>OUTB</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>C</p>
+</blockquote></td>
+<td></td>
+<td>VALC</td>
+</tr>
+<tr class="odd">
+<td>INPC</td>
+<td></td>
+<td>OUTC</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>D</p>
+</blockquote></td>
+<td></td>
+<td>VALD</td>
+</tr>
+<tr class="odd">
+<td>INPD</td>
+<td></td>
+<td>OUTD</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>E</p>
+</blockquote></td>
+<td></td>
+<td>VALE</td>
+</tr>
+<tr class="odd">
+<td>INPE</td>
+<td></td>
+<td>OUTE</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>F</p>
+</blockquote></td>
+<td></td>
+<td>VALF</td>
+</tr>
+<tr class="odd">
+<td>INPF</td>
+<td></td>
+<td>OUTF</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>G</p>
+</blockquote></td>
+<td></td>
+<td>VALG</td>
+</tr>
+<tr class="odd">
+<td>INPG</td>
+<td></td>
+<td>OUTG</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>H</p>
+</blockquote></td>
+<td></td>
+<td>VALH</td>
+</tr>
+<tr class="odd">
+<td>INPH</td>
+<td></td>
+<td>OUTH</td>
+</tr>
+<tr class="even">
+<td>SLNK</td>
+<td></td>
+<td>FLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>MLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>CLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>PLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>STLK</td>
+</tr>
+<tr class="odd">
+<td>SDIS</td>
+<td></td>
+<td>SPLK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>DIR</p>
+</blockquote></th>
+<th>cad</th>
+<th><blockquote>
+<p>VAL</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICID</td>
+<td></td>
+<td>MESS</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td></td>
+<td>MARK</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td></td>
+<td>OCID</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td></td>
+<td>OSIM</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>ODIR</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>VALA</td>
+</tr>
+<tr class="odd">
+<td>INPA</td>
+<td></td>
+<td>OUTA</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td></td>
+<td>VALB</td>
+</tr>
+<tr class="odd">
+<td>INPB</td>
+<td></td>
+<td>OUTB</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td></td>
+<td>VALC</td>
+</tr>
+<tr class="odd">
+<td>INPC</td>
+<td></td>
+<td>OUTC</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td></td>
+<td>VALD</td>
+</tr>
+<tr class="odd">
+<td>INPD</td>
+<td></td>
+<td>OUTD</td>
+</tr>
+<tr class="even">
+<td>SLNK</td>
+<td></td>
+<td>FLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>MLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>CLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>PLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>STLK</td>
+</tr>
+<tr class="odd">
+<td>SDIS</td>
+<td></td>
+<td>SPLK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>DIR</p>
+</blockquote></th>
+<th>cad</th>
+<th><blockquote>
+<p>VAL</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICID</td>
+<td></td>
+<td>MESS</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td></td>
+<td>MARK</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td></td>
+<td>OCID</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>A</p>
+</blockquote></td>
+<td></td>
+<td>OSIM</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>ODIR</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>VALA</td>
+</tr>
+<tr class="odd">
+<td>INPA</td>
+<td></td>
+<td>OUTA</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>B</p>
+</blockquote></td>
+<td></td>
+<td>VALB</td>
+</tr>
+<tr class="odd">
+<td>INPB</td>
+<td></td>
+<td>OUTB</td>
+</tr>
+<tr class="even">
+<td>SLNK</td>
+<td></td>
+<td>FLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>MLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>CLNK</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>PLNK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>STLK</td>
+</tr>
+<tr class="odd">
+<td>SDIS</td>
+<td></td>
+<td>SPLK</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NPPNMSNPPNMSNPPNMSNPPNMS NPPNMSNPPNMSNPPNMSNPPNMS</p>
+</blockquote>
+<p>NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMS</p>
+</blockquote>
+<p>NPPNMS NPPNMSNPPNMS NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMS</p>
+</blockquote>
+<p>NPPNMSNPPNMSNPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMSNPPNMSNPPNMS</p>
+</blockquote>
+<p>NPPNMS NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMS</p>
+</blockquote>
+<p>NPPNMS NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMSNPPNMS</p>
+</blockquote>
+<p>NPPNMSNPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMS</p>
+</blockquote>
+<p>NPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMS</p>
+</blockquote>
+<p>NPPNMS NPPNMSNPPNMS</p>
+<blockquote>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>NPPNMSNPPNMS</p>
+<p>.</p>
+</blockquote>
+<h2 id="car---command-action-response-record">4.0 CAR - Command Action Response Record</h2>
+<blockquote>
+<p>The CAR record provides information about the state of a particular action occurring within a database. Possible states of the CAR record are UNAVAILABLE, IDLE, BUSY, PAUSED, and ERR. The allowable transitions between the states are illustrated in the figure below.</p>
+</blockquote>
+<h3 id="field-summary-2"> 4.1 Field Summary</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>RECCHOICE</td>
+<td>Yes</td>
+<td>Idle</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>CLID</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OERR</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>IVAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>ICID</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>IMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>IERR</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>AVAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MVAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>ACID</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MCID</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>AMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>AERR</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MERR</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>ERSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>SIOL</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SVAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SIMM</td>
+<td>RECCHOICE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SIMS</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-descriptions-2"> 4.2 Field Descriptions</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>State</td>
+<td>Current state</td>
+</tr>
+<tr class="even">
+<td>CLID</td>
+<td>Client ID</td>
+<td>Value of the latest client ID</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>Message (out)</td>
+<td>Output message</td>
+</tr>
+<tr class="even">
+<td>OERR</td>
+<td>Error Code (out)</td>
+<td>Output error code</td>
+</tr>
+<tr class="odd">
+<td>IVAL</td>
+<td>State (in)</td>
+<td>Input state transition</td>
+</tr>
+<tr class="even">
+<td>ICID</td>
+<td>Client ID (in)</td>
+<td>Link to client ID</td>
+</tr>
+<tr class="odd">
+<td>IMSS</td>
+<td>Message (in)</td>
+<td>Input message</td>
+</tr>
+<tr class="even">
+<td>IERR</td>
+<td>Error Code (in)</td>
+<td>Input error code</td>
+</tr>
+<tr class="odd">
+<td>AVAL</td>
+<td><p>Last State</p>
+<p>Archived</p></td>
+<td>The last state value which was archived</td>
+</tr>
+<tr class="even">
+<td><strong>Name</strong></td>
+<td><strong>Summary</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="odd">
+<td>MVAL</td>
+<td><p>Last State</p>
+<p>Monitored</p></td>
+<td>The last state value which generated a monitor event</td>
+</tr>
+<tr class="even">
+<td>ACID</td>
+<td><p>Last Client ID</p>
+<p>Archived</p></td>
+<td>The last Client ID which generated an archive event</td>
+</tr>
+<tr class="odd">
+<td>MCID</td>
+<td><p>Last Client ID</p>
+<p>Monitored</p></td>
+<td>The last Client ID which generated a monitor event</td>
+</tr>
+<tr class="even">
+<td>AMSS</td>
+<td><p>Last Message</p>
+<p>Archived</p></td>
+<td>The last message which generated an archive event</td>
+</tr>
+<tr class="odd">
+<td>MMSS</td>
+<td><p>Last Message</p>
+<p>Monitored</p></td>
+<td>The last message which generated a monitor event</td>
+</tr>
+<tr class="even">
+<td>AERR</td>
+<td><p>Last Error Code</p>
+<p>Archived</p></td>
+<td>The last error code which generated an archive event</td>
+</tr>
+<tr class="odd">
+<td>MERR</td>
+<td><p>Last Error Code</p>
+<p>Monitored</p></td>
+<td>The last error code which generated a monitor event</td>
+</tr>
+<tr class="even">
+<td>ERSV</td>
+<td><p>Error Alarm</p>
+<p>Severity</p></td>
+<td>The severity code of the error alarm</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td><p>Simulation</p>
+<p>Error Link</p></td>
+<td>Simulation mode variables. Refer to reference [1], chapter 3.</td>
+</tr>
+<tr class="even">
+<td>SVAL</td>
+<td><p>Simulation</p>
+<p>Error</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SIML</td>
+<td><p>Simulation</p>
+<p>Mode Link</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SIMM</td>
+<td><p>Simulation</p>
+<p>Mode</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SIMS</td>
+<td><p>Simulation</p>
+<p>Mode Alarm</p>
+<p>Severity</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines-2"> 4.3 Record Support Routines</h3>
+<h4 id="init_record-2"> 4.3.1 init_record</h4>
+<blockquote>
+<p>This routine sets the current state to IDLE and clears the input message and error code. Any simulation modes or links are also initialized.</p>
+</blockquote>
+<p><strong>4.3.2 process</strong></p>
+<blockquote>
+<p>See the next section.</p>
+</blockquote>
+<p><strong>4.3.3 get_value</strong></p>
+<blockquote>
+<p>This routine fills the values of struct valueDes so that they refer to VAL.</p>
+</blockquote>
+<h4 id="get_enum_str-2"> 4.3.4 get_enum_str</h4>
+<blockquote>
+<p>This routine converts the long integer values 0 through 5 into the strings “UNAVAILABLE”, “IDLE”, “PAUSED”, “ERR”, “BUSY”, and “UNKNOWN” respectively.</p>
+</blockquote>
+<p><strong>4.3.5 get_enum_strs</strong></p>
+<blockquote>
+<p>This routine returns all of the above strings.</p>
+</blockquote>
+<p><strong>4.3.6 put_enum_str</strong></p>
+<blockquote>
+<p>This routine converts the state strings into values 0 through 5.</p>
+</blockquote>
+<h3 id="record-processing-2"> 4.4 Record Processing</h3>
+<blockquote>
+<p>Record processing begins when a value is written into the IVAL field. The client ID is read from the ICID link and put into CLID. The input value is used to transition the CAR state machine and the input message and input error code are placed into the output message and output error code fields. If the state machine transitions to the ERROR state an alarm is generated.</p>
+</blockquote>
+<p>Monitors are posted if the output value is different than the last output value or the client ID is different than the old client ID. Monitors are posted on the VAL, CLID, OMSS, and OERR fields.</p>
+<p><strong>4.5 Device Support</strong></p>
+<blockquote>
+<p>There is no device support available.</p>
+</blockquote>
+<h3 id="capfast-2"> 4.6 CapFast</h3>
+<blockquote>
+<p>There is one CapFast symbol for the CAR record.</p>
+</blockquote>
+<p><strong>FIGURE 5.</strong> CapFast <em>ecars</em> symbol .</p>
+<table>
+<thead>
+<tr class="header">
+<th>IVAL</th>
+<th>car</th>
+<th><blockquote>
+<p>VAL</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICID</td>
+<td></td>
+<td>CLID</td>
+</tr>
+<tr class="even">
+<td>IMSS</td>
+<td></td>
+<td>OMSS</td>
+</tr>
+<tr class="odd">
+<td>IERR</td>
+<td></td>
+<td>OERR</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td></td>
+<td>FLNK</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SLNK</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SDIS</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>.</p>
+</blockquote>
+<h2 id="sir---status-information-record">5.0 SIR - Status Information Record</h2>
+<blockquote>
+<p>The Status Information Record provides a standard information-passing mechanism between Gemini principle systems. The SIR records for any Gemini system are expected to be combined into a separate database called the Status Alarm Database (SAD) and loaded into the SAD IOC.</p>
+</blockquote>
+<p>SIR records combine three important parts of Gemini EPICS status reporting: a status value, status message, and alarms. The status value is read through the INP link, the status message is placed into the IMSS link. Alarms are propagated to the SIR record by the input link.</p>
+<p>There are three valid output data types: long integer, double precision, and string. A subroutine supplied by the user can be attached to the SNAM field and called during record processing. This subroutine can convert the input, raise additional alarms, or enhance the output message string.</p>
+<blockquote>
+<p>A full description of the SIR record’s function is expected in the FDSC field. This field can hold a 40 character string which is used by the OCS when displaying the SIR value.</p>
+</blockquote>
+<h3 id="field-summary-3"> 5.1 Field Summary</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INP</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>IMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FDSC</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVL</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>EGU</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>units</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VAL</td>
+<td>VOID *</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SNAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SADR</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>STYP</td>
+<td>SHORT</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td>SHORT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>AVAL</td>
+<td>VOID *</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>MVAL</td>
+<td>VOID *</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>AMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>MMSS</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LALM</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>XXX</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>HIHI</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>LOLO</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>HIGH</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>LOW</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>BRSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>HHSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>LLSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>HSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>LSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>HYST</td>
+<td>DOUBLE</td>
+<td>Yes</td>
+<td>0</td>
+<td>XXX</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>ADEL</td>
+<td>DOUBLE</td>
+<td>Yes</td>
+<td>0</td>
+<td>XXX</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MDEL</td>
+<td>DOUBLE</td>
+<td>Yes</td>
+<td>0</td>
+<td>XXX</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SVAL</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>SIML</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SIMM</td>
+<td>RECCHOICE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SIMS</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-descriptions-3"> 5.2 Field Descriptions</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>INP</td>
+<td>Input Link</td>
+<td>A CA link to the value to be reported. This value must match the type declared in FTVL.</td>
+</tr>
+<tr class="even">
+<td>IMSS</td>
+<td>Message In</td>
+<td>The input message.</td>
+</tr>
+<tr class="odd">
+<td>FDSC</td>
+<td>Full Description</td>
+<td>A 40 character description of the SIR record</td>
+</tr>
+<tr class="even">
+<td>FTVL</td>
+<td>Type of value</td>
+<td>The data type of the input link. May be either LONG, DOUBLE, or STRING.</td>
+</tr>
+<tr class="odd">
+<td>EGU</td>
+<td><p>Engineering</p>
+<p>Units</p></td>
+<td>The units of the value.</td>
+</tr>
+<tr class="even">
+<td>VAL</td>
+<td>Value Out</td>
+<td>The input value converted to a string.</td>
+</tr>
+<tr class="odd">
+<td>OMSS</td>
+<td>Message Out</td>
+<td>The output message.</td>
+</tr>
+<tr class="even">
+<td>SNAM</td>
+<td><p>Subroutine</p>
+<p>Name</p></td>
+<td>The VxWorks name of a subroutine to perform additional conversion between the input and output values.</td>
+</tr>
+<tr class="odd">
+<td>SADR</td>
+<td><p>Subroutine</p>
+<p>Address</p></td>
+<td>The internal representation of the subroutine address.</td>
+</tr>
+<tr class="even">
+<td>STYP</td>
+<td>Subroutine symbol type</td>
+<td>Not used.</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td><p>Display</p>
+<p>Precision</p></td>
+<td>This value is used for the precision of double-precision output.</td>
+</tr>
+<tr class="even">
+<td>AVAL</td>
+<td><p>Last Value</p>
+<p>Archived</p></td>
+<td>This value is used to determine if the new value needs to generate an archive monitor.</td>
+</tr>
+<tr class="odd">
+<td>MVAL</td>
+<td><p>Last Value</p>
+<p>Monitored</p></td>
+<td>This value is used to determine if the new value needs to generate a monitor.</td>
+</tr>
+<tr class="even">
+<td>AMSS</td>
+<td><p>Last Message</p>
+<p>Archived</p></td>
+<td>This string used to determine if the new message string needs to generate an archive monitor</td>
+</tr>
+<tr class="odd">
+<td>MMSS</td>
+<td><p>Last Message</p>
+<p>Monitored</p></td>
+<td>This string used to determine if the new message string needs to generate a monitor.</td>
+</tr>
+<tr class="even">
+<td>LALM</td>
+<td><p>Last Value</p>
+<p>Alarmed</p></td>
+<td>This value saves the last value that caused an alarm.</td>
+</tr>
+<tr class="odd">
+<td>HIHI</td>
+<td><p>Hihi Alarm</p>
+<p>Limit</p></td>
+<td>This sets the HI-HI alarm limit.</td>
+</tr>
+<tr class="even">
+<td>LOLO</td>
+<td><p>Lolo Alarm</p>
+<p>Limit</p></td>
+<td>This sets the LOW-LOW alarm limit.</td>
+</tr>
+<tr class="odd">
+<td>HIGH</td>
+<td><p>High Alarm</p>
+<p>Limit</p></td>
+<td>This sets the HIGH alarm limit.</td>
+</tr>
+<tr class="even">
+<td>LOW</td>
+<td><p>Low Alarm</p>
+<p>Limit</p></td>
+<td>This sets the low alarm limit.</td>
+</tr>
+<tr class="odd">
+<td>BRSV</td>
+<td><p>Bad Sub Return</p>
+<p>Severity</p></td>
+<td>This alarm is set if the user subroutine returns a non-zero value.</td>
+</tr>
+<tr class="even">
+<td>HHSV</td>
+<td>Hihi Severity</td>
+<td>This alarm is set if the HIGH-HIGH value is reached.</td>
+</tr>
+<tr class="odd">
+<td>LLSV</td>
+<td>Lolo Severity</td>
+<td>This alarm is set if the LOW-LOW value is reached.</td>
+</tr>
+<tr class="even">
+<td>HSV</td>
+<td>High Severity</td>
+<td>This alarm is set if the HIGH value is reached.</td>
+</tr>
+<tr class="odd">
+<td>LSV</td>
+<td>Low Severity</td>
+<td>This alarm is set if the LOW value is reached.</td>
+</tr>
+<tr class="even">
+<td><strong>Name</strong></td>
+<td><strong>Summary</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="odd">
+<td>HYST</td>
+<td><p>Alarm</p>
+<p>Deadband</p></td>
+<td>This sets the hysteresis range for alarm reporting.</td>
+</tr>
+<tr class="even">
+<td>ADEL</td>
+<td><p>Archive</p>
+<p>Deadband</p></td>
+<td>This set the archive hysteresis range.</td>
+</tr>
+<tr class="odd">
+<td>MDEL</td>
+<td><p>Monitor</p>
+<p>Deadband</p></td>
+<td>This sets the monitor hysteresis range.</td>
+</tr>
+<tr class="even">
+<td>SIOL</td>
+<td><p>Simulation</p>
+<p>Value Link</p></td>
+<td><p>In simulation mode this link value is read and returned in</p>
+<p>VAL.</p></td>
+</tr>
+<tr class="odd">
+<td>SVAL</td>
+<td><p>Simulation</p>
+<p>Value</p></td>
+<td>The simulation value is stored here.</td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td><p>Simulation</p>
+<p>Mode Link</p></td>
+<td>This link determines if the record is in simulation mode or not.</td>
+</tr>
+<tr class="odd">
+<td>SIMM</td>
+<td><p>Simulation</p>
+<p>Mode</p></td>
+<td>The simulation mode is stored here.</td>
+</tr>
+<tr class="even">
+<td>SIMS</td>
+<td><p>Simulation</p>
+<p>Mode Alarm</p>
+<p>Severity</p></td>
+<td>This is the value of the simulation mode alarm severity.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines-3"> 5.3 Record Support Routines</h3>
+<h4 id="init_record-3"> 5.3.1 init_record</h4>
+<blockquote>
+<p>On the first pass, space is allocated for the VAL, SVAL, MVAL, AVAL fields, based upon the type of FTVL field (DBF_STRING, DBF_DOUBLE, or DBF_LONG). On the second pass, the simulation mode is checked and if true, the simulation mode and input link are set. The address of the process subroutine (SNAM) is found.</p>
+</blockquote>
+<p><strong>5.3.2 process</strong></p>
+<blockquote>
+<p>See the next section.</p>
+</blockquote>
+<p><strong>5.3.3 get_value</strong></p>
+<blockquote>
+<p>This routine fills the values of struct valueDes so that they refer to VAL.</p>
+</blockquote>
+<p><strong>5.3.4 get_precision</strong></p>
+<blockquote>
+<p>This routine retrieves PREC.</p>
+</blockquote>
+<p><strong>5.3.5 get_units</strong></p>
+<blockquote>
+<p>This routine returns EGU.</p>
+</blockquote>
+<h4 id="cvt_dbaddr"> 5.3.6 cvt_dbaddr</h4>
+<blockquote>
+<p>This routine converts the VAL field to either string, double precision, or long integer based upon the value of FTVL.</p>
+</blockquote>
+<h4 id="get_alarm_double"> 5.3.7 get_alarm_double</h4>
+<blockquote>
+<p>This routine sets the following values:</p>
+<p>upper_alarm_limit = HIHI upper_warning_limit = HIGH lower_warning_limit = LOW lower_alarm_limit = LOLO</p>
+</blockquote>
+<h3 id="record-processing-3"> 5.4 Record Processing</h3>
+<blockquote>
+<p>In simulation mode, the simulation value is fetched from the link. Otherwise the values is fetched from the INP link. The user subroutine (SNAM) is executed and the return value is checked. For return values of zero, the input message IMSS is copied to the output message OMSS, the record is time stamped, alarms and monitors are checked, and the forward link is processed.</p>
+<p>An alarm is set if the value is outside the preset range limits (HIHI, HIGH, LOW, LOLO) and outside of the hysteresis range (HYST).</p>
+<p>Logging and archive monitors are raised on VAL and OMSS if their value changes. For double precision and long integer values of VAL the change must be greater than the hysteresis ranges (MDEL and ADEL).</p>
+</blockquote>
+<p><strong>5.5 Device Support</strong></p>
+<blockquote>
+<p>No device support is available.</p>
+</blockquote>
+<h3 id="capfast-3"> 5.6 CapFast</h3>
+<blockquote>
+<p>There is one CapFast symbol for the SIR record.</p>
+</blockquote>
+<p><strong>FIGURE 6.</strong> CapFast <em>esirs</em> symbol</p>
+<blockquote>
+<p>.</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>INP</p>
+</blockquote></th>
+<th><blockquote>
+<p>sir</p>
+</blockquote></th>
+<th>FLNK</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IMSS</td>
+<td></td>
+<td><blockquote>
+<p>VAL</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td>SIML</td>
+<td></td>
+<td>OMSS</td>
+</tr>
+<tr class="odd">
+<td>SIOL</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SLNK</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SDIS</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>NPP NMS</p>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>NPPNMS</p>
+<p>.</p>
+</blockquote>
+<h2 id="lutout---lookup-table-output-record">6.0 lutout - Lookup Table Output Record</h2>
+<blockquote>
+<p>The lutout record converts a character string tag into up to four output values. The output values may be either string, double-precision, or long integer, and are selected through the FTVA, FTVB, FTVC, and FTVD fields. The conversion is performed on the value found in the lookup table for the appropriate output, thus if the conversion is to a long integer type the lookup table value should be an ASCII string representation of a long integer. Conversion of string values consists of copying the lookup table value to the output field. A character string tag may have outputs with mixed types, however each output field’s type is fixed at initialization.</p>
+<p>The lutout record may selectively send values to the output fields by using the SELB field. This field is a bit mask for the enabled output fields. If the bit mask is 1, then only the VALA field will be written, if it is 3, then both VALA and VALB will be written. A value of 15 will write to all four output fields. The number of fields successfully written will be placed in the NVAL field. This value is the intersection of the bits set in SELB and the number of values in a tag’s lookup table entry. The SEVR and STAT alarm fields are set to INVALID and SOFT if an input configuration string is not recognized</p>
+<p>The lookup table can be reread from the file by writing a one to the LOAD field.</p>
+</blockquote>
+<p>A lutout record can reference another lutout or lutin record’s lookup table by making a connection between its LLNK field and the other record’s LTBL field. The record can now find a tag in either its lookup table or the table from the other record. This feature can only work within an IOC; it will not work across channel access. <em>[This feature is not yet implemented].</em></p>
+<blockquote>
+<p>More information and examples can be found in the lutout manual[3].</p>
+</blockquote>
+<p><strong>6.1 Field Summary</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>OVAL</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FDIR</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FNAM</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NVAL</td>
+<td>LONG</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>ONVL</td>
+<td>LONG</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SELB</td>
+<td>LONG</td>
+<td>15</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LOAD</td>
+<td>LONG</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Special</td>
+</tr>
+<tr class="odd">
+<td>LTBL</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LLNK</td>
+<td>INLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td>LONG</td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALA</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALB</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALC</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALD</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OLDA</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OLDB</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OLDC</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OLDD</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTA</td>
+<td>OUTLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTB</td>
+<td>OUTLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTC</td>
+<td>OUTLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTD</td>
+<td>OUTLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVA</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVB</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVC</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVD</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-description"> 6.2 Field Description</h3>
+<p><strong>TABLE 1.</strong> Lutout Record Field Description</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>Input string</td>
+<td>An ASCII string which corresponds to a tag entry in the lookup table.</td>
+</tr>
+<tr class="even">
+<td>OVAL</td>
+<td>Old tag</td>
+<td>The previous value.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FDIR</td>
+<td>Initialization file directory</td>
+<td>The name of the directory of the lookup table.</td>
+</tr>
+<tr class="even">
+<td>FNAM</td>
+<td>Initialization file name</td>
+<td>The name of the file for the lookup table.</td>
+</tr>
+<tr class="odd">
+<td>NVAL</td>
+<td>Number of outputs</td>
+<td>This is the number of values found in the lookup table for the appropriate input tag. It is between 0 and 4.</td>
+</tr>
+<tr class="even">
+<td>ONVL</td>
+<td>Old number</td>
+<td>The previous value of NVAL. Used for triggering monitors.</td>
+</tr>
+<tr class="odd">
+<td>SELB</td>
+<td>Selection Bits</td>
+<td>This is a bit mask for the values which are to be converted. If SELB is 1, only VALA will be written; if 3, VALA and VALB will be written. A value of 15 will write all values.</td>
+</tr>
+<tr class="even">
+<td>LOAD</td>
+<td>Reload configuration file</td>
+<td><p>Any nonzero value written to this field will force the reloading of the lookup table from the configuration file defined by</p>
+<p>FDIR and FNAM.</p></td>
+</tr>
+<tr class="odd">
+<td>LTBL</td>
+<td>Lookup Table</td>
+<td>This is the location where the conversion table is stored in memory.</td>
+</tr>
+<tr class="even">
+<td>LLNK</td>
+<td><p>Lookup Table</p>
+<p>Link</p></td>
+<td>The link to another record’s lookup table (LTBL). This link only works within an IOC.</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td>Precision</td>
+<td>This is the level of precision given for double-precision conversion.</td>
+</tr>
+<tr class="even">
+<td>VALA</td>
+<td>Output value</td>
+<td>The lookup table values are put on this port. A monitor event is sent if the value changed.</td>
+</tr>
+<tr class="odd">
+<td>VALB</td>
+<td>Output value</td>
+<td>The lookup table values are put on this port. A monitor event is sent if the value changed.</td>
+</tr>
+<tr class="even">
+<td>VALC</td>
+<td>Output value</td>
+<td>The lookup table values are put on this port. A monitor event is sent if the value changed.</td>
+</tr>
+<tr class="odd">
+<td>VALD</td>
+<td>Output value</td>
+<td>The lookup table values are put on this port. A monitor event is sent if the value changed.</td>
+</tr>
+<tr class="even">
+<td>OLDA</td>
+<td>Old value</td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="odd">
+<td>OLDB</td>
+<td>Old value</td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="even">
+<td>OLDC</td>
+<td>Old value</td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="odd">
+<td>OLDD</td>
+<td>Old value</td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="even">
+<td>OUTA</td>
+<td>Output link</td>
+<td>The lookup table values are sent out these links.</td>
+</tr>
+<tr class="odd">
+<td>OUTB</td>
+<td>Output link</td>
+<td>The lookup table values are sent out these links.</td>
+</tr>
+<tr class="even">
+<td>OUTC</td>
+<td>Output link</td>
+<td>The lookup table values are sent out these links.</td>
+</tr>
+<tr class="odd">
+<td>OUTD</td>
+<td>Output link</td>
+<td>The lookup table values are sent out these links.</td>
+</tr>
+<tr class="even">
+<td>FTVA</td>
+<td>Output value type</td>
+<td><p>May be one of STRING, DOUBLE, or LONG. This field</p>
+<p>forces the conversion of the appropriate table value to the correct type.</p></td>
+</tr>
+<tr class="odd">
+<td>FTVB</td>
+<td>Output value type</td>
+<td><p>May be one of STRING, DOUBLE, or LONG. This field</p>
+<p>forces the conversion of the appropriate table value to the correct type.</p></td>
+</tr>
+<tr class="even">
+<td><strong>Name</strong></td>
+<td><strong>Summary</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="odd">
+<td>FTVC</td>
+<td>Output value type</td>
+<td><p>May be one of STRING, DOUBLE, or LONG. This field</p>
+<p>forces the conversion of the appropriate table value to the correct type.</p></td>
+</tr>
+<tr class="even">
+<td>FTVD</td>
+<td>Output value type</td>
+<td><p>May be one of STRING, DOUBLE, or LONG. This field</p>
+<p>forces the conversion of the appropriate table value to the correct type.</p></td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines-4"> 6.3 Record Support Routines</h3>
+<h4 id="init_record-4"> 6.3.1 init_record</h4>
+<blockquote>
+<p>During the first initialization pass the ASCII configuration file is read and stored in LTBL. Space is allocated for the VAL[A-D] and OLD[A-D] fields. On the second pass, device support initialization is performed.</p>
+</blockquote>
+<p><strong>6.3.2 process</strong></p>
+<blockquote>
+<p>See next section.</p>
+</blockquote>
+<h4 id="special-1"> 6.3.3 special</h4>
+<blockquote>
+<p>If the LOAD field is nonzero, the existing lookup table is cleared and a new table is read from the file described by the FDIR and FNAM fields.</p>
+</blockquote>
+<p><strong>6.3.4 get_value</strong></p>
+<blockquote>
+<p>This routine fills in the values of struct valueDes so that they refer to VAL.</p>
+</blockquote>
+<p><strong>6.3.5 get_precision</strong></p>
+<blockquote>
+<p>This routine returns the value of PREC.</p>
+</blockquote>
+<p><strong>6.3.6 get_enum_strs</strong></p>
+<blockquote>
+<p>All tags are returned by this routine.</p>
+</blockquote>
+<h4 id="cvt_dbaddr-1"> 6.3.7 cvt_dbaddr</h4>
+<blockquote>
+<p>This routine converts the output strings into the appropriate data type defined by FTV[A-D].</p>
+</blockquote>
+<h3 id="record-processing-4"> 6.4 Record Processing</h3>
+<blockquote>
+<p>The processing algorithm performs the following steps:</p>
+</blockquote>
+<ol type="1">
+<li><blockquote>
+<p>Checks to see the appropriate device support module exists. If it doesn’t, an error message is issued and processing is terminated with the PACT field set to TRUE.</p>
+</blockquote></li>
+<li><blockquote>
+<p>The device support write function is called. The return status value is set from the return value of this function.</p>
+</blockquote></li>
+<li><blockquote>
+<p>If the device support did not complete processing, the PACT field is left TRUE and processing terminates. It is assumed the device support callback will reenter the processing routine and complete at a later time.</p>
+</blockquote></li>
+<li><blockquote>
+<p>The processing flag is set to TRUE.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Check for alarms. If the NVAL field is equal to zero, the SOFT_ALARM is set to INVALID.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Check for monitors. If any value in the fields VAL, NVAL, VALA, VALB, VALC, VALD has changed a monitor event is posted for that field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Process the forward link.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Set PACT to FALSE and exit.</p>
+</blockquote></li>
+</ol>
+<p><strong>6.5 Device Support</strong></p>
+<blockquote>
+<p>The only device currently supported is Soft Channel.</p>
+</blockquote>
+<h3 id="capfast-4"> 6.6 CapFast</h3>
+<p>There are two CapFast symbols for the lutout record: <em>elutouts.sym</em> and <em>elutout.sym</em>. These symbol are included in the epics3.12.2Gem.4 and later distributions. The symbols are shown in Figure 7 on page 26.</p>
+<p><strong>FIGURE 7.</strong> CapFast <em>elutouts</em> and <em>elutout</em> symbols</p>
+<blockquote>
+<p>.</p>
+<p>.</p>
+</blockquote>
+<h3 id="future-enhancements"> 6.7 Future Enhancements</h3>
+<blockquote>
+<p>Some future enhancements the lutout record may be:</p>
+</blockquote>
+<ul>
+<li><p>Access of LTBL across a network.</p></li>
+<li><p>Support for more data types.</p></li>
+<li><p>Per-item additions to the lookup table.</p></li>
+<li><p>Better return of the list of tags.</p></li>
+</ul>
+<h2 id="lutin---lookup-table-input-record">7.0 lutin - Lookup Table Input Record</h2>
+<blockquote>
+<p>The lutin record converts up to four input values into a character string. The input values can be any of string, double-precision, or long integer data types, determined from the FTVA, FTVB. FTVC, and FTVD fields. The conversion type must match the value found in the lookup table, thus if the type is a long integer, the corresponding lookup table value must also be an integer. For integer and double-precision values, the value is matched to within the low and high tolerances given in the lookup table. This feature supports any hysteresis or jitter associated with the sampled value. The low and high tolerances can be individually adjusted to accommodate nonlinear or preloaded systems.</p>
+<p>The SELB field allows only the specified input fields to be used in the conversion. If the selection bit mask is 1, the first configuration that matches only the VALA field is returned. If the mask is 3, the VALA and VALB fields are the only ones tested. For a mask of 15, all input fields are used. The NVAL field returns the number of fields that were successfully matched. An NVAL field of zero will generate a SOFT alarm of INVALID.</p>
+<p>The lookup table can be reread from the file by writing a one to the LOAD field.</p>
+<p>A lutin record can reference another lutout or lutin record’s lookup table by making a connection between its LLNK field and the other record’s LTBL field. The record can now find a tag in either its lookup table or the table from the other record. This feature can only work within an IOC; it will not work across channel access. [<em>This feature is not yet implemented].</em></p>
+<p>More information and examples can be found in the lutin manual[3].</p>
+</blockquote>
+<h3 id="field-summary-4"> 7.1 Field Summary</h3>
+<p><strong>TABLE 2.</strong> Lutin Record Field Summary</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OVAL</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NVAL</td>
+<td>LONG</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>ONVL</td>
+<td>LONG</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SELB</td>
+<td>LONG</td>
+<td>15</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>PREC</td>
+<td>LONG</td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FDIR</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FNAM</td>
+<td>STRING</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LTBL</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LLNK</td>
+<td>INLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LOAD</td>
+<td>LONG</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Special</td>
+</tr>
+<tr class="even">
+<td>INPA</td>
+<td>INLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><strong>Field</strong></td>
+<td><strong>Type</strong></td>
+<td><strong>Initial</strong></td>
+<td><strong>Access</strong></td>
+<td><strong>Modify</strong></td>
+<td><strong>Monitor</strong></td>
+<td><strong>PP</strong></td>
+</tr>
+<tr class="even">
+<td>INPB</td>
+<td>INLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPC</td>
+<td>INLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPD</td>
+<td>INLINK</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALA</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>VALB</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>VALC</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>VALD</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>OLDA</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OLDB</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OLDC</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OLDD</td>
+<td>NOACCESS</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVA</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVB</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVC</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVD</td>
+<td>GBLCHOICE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-description-1"> 7.2 Field Description</h3>
+<p><strong>TABLE 3.</strong> Lutin Record Field Description</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>Result</td>
+<td>The character string of the configuration that matches the inputs.</td>
+</tr>
+<tr class="even">
+<td>OVAL</td>
+<td>Old Result</td>
+<td>The old VAL. Used to trigger monitors.</td>
+</tr>
+<tr class="odd">
+<td>NVAL</td>
+<td>Result Code</td>
+<td>The number of values that were used in the match.</td>
+</tr>
+<tr class="even">
+<td>ONVL</td>
+<td>Old Result Code</td>
+<td>The old NVAL. Used to trigger monitors.</td>
+</tr>
+<tr class="odd">
+<td>SELB</td>
+<td>Selection Bits</td>
+<td>The bit mask of the input values to use for testing.</td>
+</tr>
+<tr class="even">
+<td>PREC</td>
+<td>Precision</td>
+<td>The precision of double-precision values.</td>
+</tr>
+<tr class="odd">
+<td>FDIR</td>
+<td>Init File Directory</td>
+<td>The name of the directory of the ASCII configuration file.</td>
+</tr>
+<tr class="even">
+<td>FNAM</td>
+<td>Init File Name</td>
+<td>The name of the file of the ASCII configuration file.</td>
+</tr>
+<tr class="odd">
+<td>LTBL</td>
+<td>Lookup Table</td>
+<td>The address of the storage of the lookup table.</td>
+</tr>
+<tr class="even">
+<td>LLNK</td>
+<td><p>Lookup Table</p>
+<p>Link</p></td>
+<td>A link to another record’s lookup table.</td>
+</tr>
+<tr class="odd">
+<td>LOAD</td>
+<td>Reload Table</td>
+<td><p>Any nonzero value written to this field will force the reloading of the lookup table from the configuration file defined by</p>
+<p>FDIR and FNAM.</p></td>
+</tr>
+<tr class="even">
+<td>INPA</td>
+<td>Input</td>
+<td>The input link.</td>
+</tr>
+<tr class="odd">
+<td>INPB</td>
+<td>Input</td>
+<td>The input link.</td>
+</tr>
+<tr class="even">
+<td>INPC</td>
+<td>Input</td>
+<td>The input link.</td>
+</tr>
+<tr class="odd">
+<td><strong>Name</strong></td>
+<td><strong>Summary</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="even">
+<td>INPD</td>
+<td>Input</td>
+<td>The input link.</td>
+</tr>
+<tr class="odd">
+<td>VALA</td>
+<td>Value of Input</td>
+<td>The input value.</td>
+</tr>
+<tr class="even">
+<td>VALB</td>
+<td>Value of Input</td>
+<td>The input value.</td>
+</tr>
+<tr class="odd">
+<td>VALC</td>
+<td>Value of Input</td>
+<td>The input value.</td>
+</tr>
+<tr class="even">
+<td>VALD</td>
+<td>Value of Input</td>
+<td>The input value.</td>
+</tr>
+<tr class="odd">
+<td>OLDA</td>
+<td><p>Old Value of</p>
+<p>Input</p></td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="even">
+<td>OLDB</td>
+<td><p>Old Value of</p>
+<p>Input</p></td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="odd">
+<td>OLDC</td>
+<td><p>Old Value of</p>
+<p>Input</p></td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="even">
+<td>OLDD</td>
+<td><p>Old Value of</p>
+<p>Input</p></td>
+<td>The old value. Used to trigger monitors.</td>
+</tr>
+<tr class="odd">
+<td>FTVA</td>
+<td>Type of Value</td>
+<td>The data type of the input value. May be either STRING, DOUBLE, or LONG.</td>
+</tr>
+<tr class="even">
+<td>FTVB</td>
+<td>Type of Value</td>
+<td>The data type of the input value. May be either STRING, DOUBLE, or LONG.</td>
+</tr>
+<tr class="odd">
+<td>FTVC</td>
+<td>Type of Value</td>
+<td>The data type of the input value. May be either STRING, DOUBLE, or LONG.</td>
+</tr>
+<tr class="even">
+<td>FTVD</td>
+<td>Type of Value</td>
+<td>The data type of the input value. May be either STRING, DOUBLE, or LONG.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines-5"> 7.3 Record Support Routines</h3>
+<h4 id="init_record-5"> 7.3.1 init_record</h4>
+<blockquote>
+<p>During the first initialization pass the ASCII configuration file is read and stored in LTBL. Space is allocated for the VAL[A-D] and OLD[A-D] fields. On the second pass, device support initialization is performed.</p>
+</blockquote>
+<p><strong>7.3.2 process</strong></p>
+<blockquote>
+<p>See next section.</p>
+</blockquote>
+<h4 id="special-2"> 7.3.3 special</h4>
+<blockquote>
+<p>If the LOAD field is nonzero, the existing lookup table is cleared and a new table is read from the file described by the FDIR and FNAM fields.</p>
+</blockquote>
+<p><strong>7.3.4 get_value</strong></p>
+<blockquote>
+<p>This routine fills in the values of struct valueDes so that they refer to VAL.</p>
+</blockquote>
+<p><strong>7.3.5 get_precision</strong></p>
+<blockquote>
+<p>This routine returns the value of PREC.</p>
+</blockquote>
+<p><strong>7.3.6 get_enum_strs</strong></p>
+<blockquote>
+<p>All tags are returned by this routine.</p>
+</blockquote>
+<h4 id="cvt_dbaddr-2"> 7.3.7 cvt_dbaddr</h4>
+<blockquote>
+<p>This routine converts the input strings into the appropriate data type defined by FTV[A-D].</p>
+</blockquote>
+<h3 id="record-processing-5"> 7.4 Record Processing</h3>
+<blockquote>
+<p>The processing algorithm performs the following steps:</p>
+</blockquote>
+<ol type="1">
+<li><p>Checks to see the appropriate device support module exists. If it doesn’t, an error message is issued and processing is terminated with the PACT field set to TRUE.</p></li>
+<li><p>The device support read function is called. The return status value is set from the return value of this function.</p></li>
+<li><p>If the device support did not complete processing, the PACT field is left TRUE and processing terminates. It is assumed the device support callback will reenter the processing routine and complete at a later time.</p></li>
+<li><p>The processing flag is set to TRUE.</p></li>
+<li><p>Check for alarms. If the NVAL field is equal to zero, SOFT_ALARM is set to INVALID.</p></li>
+<li><p>Check for monitors. If any value in the fields VAL, NVAL, VALA, VALB, VALC, VALD has changed a monitor event is posted for that field.</p></li>
+<li><p>Process the forward link.</p></li>
+<li><p>Set PACT to FALSE and exit.</p></li>
+</ol>
+<p><strong>7.5 Device Support</strong></p>
+<blockquote>
+<p>The only device currently supported is Soft Channel.</p>
+</blockquote>
+<h3 id="capfast-5"> 7.6 CapFast</h3>
+<blockquote>
+<p>There are two CapFast symbols for the lutin record: <em>elutins.sym</em> and <em>elutin.sym</em>. These symbols are part of the epics3.12.2Gem.4 and later distributions. The symbols are shown in Figure 8 on page 30.</p>
+</blockquote>
+<p><strong>FIGURE 8.</strong> CapFast <em>elutins</em> and <em>elutin</em> symbols<sub>.</sub></p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><table>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>SELB</p>
+</blockquote></th>
+<th><blockquote>
+<p>lutin</p>
+<p>Soft Channel</p>
+</blockquote></th>
+<th><blockquote>
+<p>FLNK</p>
+</blockquote></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>FLD0</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>FLD2</p>
+</blockquote></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>FLD1</p>
+</blockquote></td>
+<td>LUT in</td>
+<td>record</td>
+<td><blockquote>
+<p>FLD3</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>VALA</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>VAL</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><blockquote>
+<p>SCAN:Passive</p>
+<p>PHAS:0</p>
+<p>EVNT:0</p>
+<p>PINI:NO</p>
+<p>PRIO:LOW</p>
+<p>PREC:2</p>
+<p>DISV:1</p>
+<p>DISS:NO_ALARM</p>
+</blockquote></td>
+<td><p>FDIR:</p>
+<p>FNAM:</p>
+<p>SELB:15</p>
+<p>FTVA:STRING</p>
+<p>FTVB:STRING</p>
+<p>FTVC:STRING</p>
+<p>FTVD:STRING</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPA</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>NVAL</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>VALB</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>LTBL</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPB</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>VALC</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPC</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>VALD</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>INPD</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>LOAD</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>LLNK</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>SLNK</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>.</p>
+</blockquote>
+<h3 id="future-enhancements-1"> 7.7 Future Enhancements</h3>
+<blockquote>
+<p>Some future enhancements the lutin record may be:</p>
+</blockquote>
+<ul>
+<li><p>Access of LTBL across a network.</p></li>
+<li><p>Support for more data types.</p></li>
+<li><p>Per-item additions to the lookup table.</p></li>
+<li><p>Better return of the list of tags.</p></li>
+</ul>
+<h2 id="mosub---multiple-output-subroutine-record">8.0 mosub - Multiple Output Subroutine Record</h2>
+<blockquote>
+<p>The material presented here is taken from [4].</p>
+</blockquote>
+<h3 id="introduction-1">8.1 Introduction</h3>
+<blockquote>
+<p>The Multiple Output Subroutine record was developed for two reasons. Firstly, to provide a record which has more than one output field and secondly, as a record which can handle the transfer of ‘strings’ across the database. Traditional EPICS records only have one output value. This is very restricting when dealing with an application which needs to transfer large amounts of data between records and leads to unnecessarily complicated database schematics. It is also true that with the ‘standard’ set of EPICS records, there is no way of passing a ‘string’ between two records. For example, there are ‘stringin’ and ‘stringout’ records, but the problem is, how do you get the string into the record in the first place? The Multiple Output Subroutine record solves both of these problems by adding extra functionality to the original EPICS ‘sub’ record.</p>
+</blockquote>
+<h3 id="field-summary-5"> 8.2 Field Summary</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>INAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SNAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>SADR</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>STYP</td>
+<td>SHORT</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPA</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPB</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPC</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPD</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPE</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPF</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPG</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPH</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPI</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPJ</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPK</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPL</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPM</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTA</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTB</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTC</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTD</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTE</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTF</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUT1</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUT2</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUT3</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUT4</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUT5</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUT6</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>EGU</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>HOPR</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LOPR</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>HIHI</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>LOLO</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>HIGH</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LOW</td>
+<td>FLOAT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>PREC</td>
+<td>SHORT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>BRSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>HHSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>LLSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>HSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>LSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>HYST</td>
+<td>DOUBLE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>ADEL</td>
+<td>DOUBLE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>MDEL</td>
+<td>DOUBLE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>A</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>G</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>H</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>I</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>J</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>K</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>L</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>VALA</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALB</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALC</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALD</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALE</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALF</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>STR1</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>STR2</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>STR3</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>STR4</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>STR5</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>STR6</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LA</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LB</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LC</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LD</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LE</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LF</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LG</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LH</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LI</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LJ</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LK</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LL</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LM</td>
+<td>STRING</td>
+<td>No</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LVA</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LVB</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LVC</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LVD</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LVE</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LVF</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LS1</td>
+<td>STRING</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LS2</td>
+<td>STRING</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LS3</td>
+<td>STRING</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LS4</td>
+<td>STRING</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LS5</td>
+<td>STRING</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>LS6</td>
+<td>STRING</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LALM</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>ALST</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>MLST</td>
+<td>DOUBLE</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-descriptions-4">8.3 Field Descriptions</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>Value Field</td>
+<td>This field is not used.</td>
+</tr>
+<tr class="even">
+<td>INAM</td>
+<td><p>Initialisation</p>
+<p>Routine</p></td>
+<td>This is the name of the initialisation routine to be called once, at iocInit.</td>
+</tr>
+<tr class="odd">
+<td>SNAM</td>
+<td>Process Routine</td>
+<td>This is the name of the routine to be called when the record processes.</td>
+</tr>
+<tr class="even">
+<td>SADR</td>
+<td><p>Subroutine</p>
+<p>Address</p></td>
+<td>Filled in by record processing.</td>
+</tr>
+<tr class="odd">
+<td>STYP</td>
+<td><p>Subroutine</p>
+<p>Symbol Type</p></td>
+<td>Filled in by record processing.</td>
+</tr>
+<tr class="even">
+<td><p>INPA,...,</p>
+<p>INPM</p></td>
+<td><p>Input Link A,...,</p>
+<p>Input Link M</p></td>
+<td>The input links from where the values of A,...,M are fetched during record processing.</td>
+</tr>
+<tr class="odd">
+<td><p>OUTA,...,</p>
+<p>OUTF</p></td>
+<td><p>Output Link A,..</p>
+<p>Output Link F</p></td>
+<td>The output links on which the DOUBLE values located at VALA,...,VALF are placed during record processing.</td>
+</tr>
+<tr class="even">
+<td><p>OUT1,...,</p>
+<p>OUT6</p></td>
+<td><p>Output Link 1,..</p>
+<p>Output Link 6</p></td>
+<td><p>The output links on which the STRINGS located at</p>
+<p>VAL1,...,VAL6 are placed during record processing.</p></td>
+</tr>
+<tr class="odd">
+<td>EGU</td>
+<td><p>Engineering</p>
+<p>Units</p></td>
+<td>ASCII string describing Engineering units. This field is used by record support to supply a units description string when <em>get_units</em> is called.</td>
+</tr>
+<tr class="even">
+<td>HOPR</td>
+<td><p>High Operating</p>
+<p>Range</p></td>
+<td>These fields determine the upper and lower display limits for graphical displays and the upper and lower control limits for control displays. The fields are used in the record support routines: <em>get_graphic_double</em> and <em>get_control_double</em>.</td>
+</tr>
+<tr class="odd">
+<td>LOPR</td>
+<td><p>Low Operating</p>
+<p>Range</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>HIHI</td>
+<td><p>Hihi Alarm</p>
+<p>Limit</p></td>
+<td>These fields specify the alarm limits and severities. Note that they are used as range limits for checks against the VAL field. Since the VAL field is not used by this record, these fields are redundant.</td>
+</tr>
+<tr class="odd">
+<td>LOLO</td>
+<td><p>Lolo Alarm</p>
+<p>Limit</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>HIGH</td>
+<td><p>High Alarm</p>
+<p>Limit</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>LOW</td>
+<td><p>Low Alarm</p>
+<p>Limit</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>BRSV</td>
+<td>Severity for a subroutine return value less than 0.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>HHSV</td>
+<td>Severity for a Hihi Alarm.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>LLSV</td>
+<td>Severity for a Lolo Alarm.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>HSV</td>
+<td>Severity for a High Alarm.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>LSV</td>
+<td><p>Severity for a</p>
+<p>Low Alarm</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Name</strong></td>
+<td><strong>Summary</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="even">
+<td>HYST</td>
+<td><p>Alarm</p>
+<p>Deadband</p></td>
+<td>These parameters specify hysteresis factors for raising alarms and posting logging and monitor events for the VAL field. As above, since VAL is not used by this record, these fields are redundant.</td>
+</tr>
+<tr class="odd">
+<td>ADEL</td>
+<td><p>Archive</p>
+<p>Deadband</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>MDEL</td>
+<td><p>Monitor</p>
+<p>Deadband</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>A,...,L</td>
+<td>A,...,L</td>
+<td>The input fields which hold the DOUBLE values fetched in across the input links INPA,...,INPL.</td>
+</tr>
+<tr class="even">
+<td>M</td>
+<td>M</td>
+<td>The input field which holds the STRING value fetched in across the input link INPM.</td>
+</tr>
+<tr class="odd">
+<td><p>VALA,...,</p>
+<p>VALF</p></td>
+<td>VALA,..., VALF</td>
+<td><p>These fields can hold any DOUBLE value that the user desires. They can be set from within the subroutine called at process time. The DOUBLES are placed on the output links:</p>
+<p>OUTA,...,OUTF when the record processes.</p></td>
+</tr>
+<tr class="even">
+<td><p>STR1,...,</p>
+<p>STR6</p></td>
+<td>STR1,...,STR6</td>
+<td><p>These fields can hold any STRING value that the user desires. They can be set from within the subroutine called at process time. The STRINGS are placed on the output links:</p>
+<p>OUT1,...,OUT6 when the record processes.</p></td>
+</tr>
+<tr class="odd">
+<td>LA,...,LL</td>
+<td>Last A,.., Last L</td>
+<td>Previous input DOUBLE values. These fields are used to decide when to trigger monitors on A,...,L.</td>
+</tr>
+<tr class="even">
+<td>LM</td>
+<td>Last M</td>
+<td>Previous input STRING value. This field is used to decide when to trigger a monitor on M.</td>
+</tr>
+<tr class="odd">
+<td><p>LVA,...,</p>
+<p>LVF</p></td>
+<td><p>Last VALA,...,</p>
+<p>Last VALF</p></td>
+<td>Previous output DOUBLE values. These fields are used to decide when to trigger monitors on VALA,...,VALF.</td>
+</tr>
+<tr class="even">
+<td><p>LS1,...,</p>
+<p>LS6</p></td>
+<td><p>Last STR1,...,</p>
+<p>Last STR6</p></td>
+<td>Previous output STRING values. These fields are used to decide when to trigger monitors on STR1,...,STR6.</td>
+</tr>
+<tr class="odd">
+<td>LALM</td>
+<td><p>Last Alarm</p>
+<p>Monitor</p>
+<p>Trigger Value</p></td>
+<td>These fields are used to implement the hysteresis factors for monitors. Again, since VAL is not used by this record, these fields are redundant.</td>
+</tr>
+<tr class="even">
+<td>ALST</td>
+<td><p>Last Archiver Monitor</p>
+<p>Trigger Value</p></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>MLST</td>
+<td><p>Last Value</p>
+<p>Change</p>
+<p>Monitor</p>
+<p>Trigger Value</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines-6"> 8.4 Record Support Routines</h3>
+<h4 id="init_record-6"> 8.4.1 init_record</h4>
+<blockquote>
+<p>The VAL field is set equal to 0. For each constant input link to a DOUBLE value, the corresponding field is initialised with the constant value. For each input link that is of type PV_LINK, a channel access link is created. The STRING input field ‘M’ is initialised as a blank string and a channel access link is created for INPM. For each output DOUBLE and STRING link, a channel access link is created.</p>
+<p>The user initialisation routine, whose name is specified in INAM, is located and called. Note that the record assumes that an initialisation routine will always be specified. The record fails if no routine name is given.</p>
+<p>The routine specified in SNAM is located and its address and type are stored in SADR and STYP. These are used to call the routine when the record processes.</p>
+</blockquote>
+<h4 id="process">8.4.2 process</h4>
+<blockquote>
+<p>The record can be made to process by writing to any of the input fields A-M. The process routine implements the following algorithm:</p>
+</blockquote>
+<ul>
+<li><p>If PACT is FALSE, set PACT = TRUE and process the input links.</p></li>
+<li><p>Call the routine specified in SNAM.</p></li>
+<li><p>Process the output links.</p></li>
+<li><p>Get the time stamp for this processing.</p></li>
+<li><p>Check for alarms. Alarms are irrelevant in this record because the VAL field is not used.</p></li>
+<li><p>Post events for value changes in the input fields and the output fields.</p></li>
+<li><p>Process the record on the end of the forward link.</p></li>
+<li><p>Set PACT = FALSE.</p></li>
+</ul>
+<p><strong>8.4.3 get_value</strong></p>
+<blockquote>
+<p>Fills in the values of the <em>valueDes</em> structure so that they refer to VAL.</p>
+</blockquote>
+<p><strong>8.4.4 get_units</strong></p>
+<blockquote>
+<p>Retrieves the Engineering Units string.</p>
+</blockquote>
+<p><strong>8.4.5 get_precision</strong></p>
+<blockquote>
+<p>Retrieves the value of the PREC field.</p>
+</blockquote>
+<h4 id="get_graphic_double">8.4.6 get_graphic_double</h4>
+<blockquote>
+<p>Sets the upper and lower display limits for a field. If the field is one of A-D, LA-LD, VALA-VALF, HIHI, HIGH, LOW or LOLO, the limits are set to HOPR and LOPR.</p>
+</blockquote>
+<h4 id="get_control_double">8.4.7 get_control_double</h4>
+<blockquote>
+<p>Sets the upper and lower control limits for a field. If the field is one of A-D, LA-LD, VAL, HIHI, HIGH, LOW or LOLO, the limits are set to HOPR and LOPR.</p>
+</blockquote>
+<h4 id="get_alarm_double-1">8.4.8 get_alarm_double</h4>
+<blockquote>
+<p>Sets the following values:</p>
+<p>upper_alarm_limit = HIHI upper_warning_limit = HIGH lower_warning_limit = LOW lower_alarm_limit = LOLO</p>
+</blockquote>
+<h2 id="gensub---the-general-subroutine-record">9.0 GenSub - The General Subroutine Record</h2>
+<h3 id="introduction-2"> 9.1 Introduction</h3>
+<blockquote>
+<p>This record, known as ‘GenSub’, has been designed as a replacement for the standard EPICS subroutine record. It allows the easy passage of arrays, scalars and user defined structures between records existing within the same database and between those which exist in separate IOC’s. The advantage of using arrays when transferring data between IOC’s, rather than a set of values from individual records, is that Channel Access guarantees to write the whole array with one <em>ca_put</em>. The atomicity of this operation insures that data at the receiving end is consistent at any given time. This is important in many applications. The current Channel Access limit for the amount of data which can be transferred with a single <em>ca_put</em> is 16kB.</p>
+<p>Other features of the ‘GenSub’ record include the following:</p>
+</blockquote>
+<ul>
+<li><p>Up to 10 input fields.</p></li>
+<li><p>Up to 10 output fields.</p></li>
+<li><p>The types of both input and output fields are completely configurable by the user.</p></li>
+<li><p>The routine to be called at process time can be changed dynamically after the database has been loaded. The name of the routine can either be fetched in over a link from another record or written directly into the SNAM field.</p></li>
+<li><p>The user can configure the record to decide when events will be posted for the output fields. This can be: Never, Always or just when any element of an array changes value.</p></li>
+<li><p>The VAL field holds the value returned from the routine called during record processing.</p></li>
+</ul>
+<h3 id="field-summary-6">9.2 Field Summary</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OVAL</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SADR</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OSAD</td>
+<td>LONG</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>LFLG</td>
+<td>RECCHOICE</td>
+<td>Yes</td>
+<td>Ignore</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>EFLG</td>
+<td>RECCHOICE</td>
+<td>Yes</td>
+<td>Always</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SUBL</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>SNAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>ONAM</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>STYP</td>
+<td>SHORT</td>
+<td>No</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>BRSV</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td>SHORT</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPA</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPB</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPC</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPD</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPE</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPF</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPG</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPH</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>INPI</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>INPJ</td>
+<td>INLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFA</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFB</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFC</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFD</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFF</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFG</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFH</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFI</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFJ</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>D</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>E</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>G</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>H</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>I</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>J</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>FTA</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTB</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTC</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTD</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTE</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTF</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTG</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTH</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTI</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTJ</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOA</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOB</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOC</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOD</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOE</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOF</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOG</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOH</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOI</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOJ</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTA</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTB</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTC</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTD</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTE</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTF</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTG</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTH</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OUTI</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OUTJ</td>
+<td>OUTLINK</td>
+<td>Yes</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFVA</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>UFVB</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFVC</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFVD</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFVE</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFVF</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFVG</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFVH</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>UFVI</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>UFVJ</td>
+<td>STRING</td>
+<td>Yes</td>
+<td>Null</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALA</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALB</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALC</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALD</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALE</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALF</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALG</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALH</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes/No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>VALI</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>VALJ</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OVLA</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OVLB</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OVLC</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OVLD</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OVLE</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OVLF</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OVLG</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OVLH</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>OVLI</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>OVLJ</td>
+<td>NOACCESS</td>
+<td>No</td>
+<td>0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVA</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVB</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVC</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVD</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVE</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVF</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVG</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>FTVH</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>FTVI</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Field</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>DCT</strong></th>
+<th><strong>Initial</strong></th>
+<th><strong>Access</strong></th>
+<th><strong>Modify</strong></th>
+<th><strong>Rec Proc Monitor</strong></th>
+<th><strong>PP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FTVJ</td>
+<td>GBLCHOICE</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOVA</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOVB</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOVC</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOVD</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOVE</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOVF</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOVG</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOVH</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>NOVI</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>NOVJ</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>1</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>TOVA</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>TOVB</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>TOVC</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>TOVD</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>TOVE</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>TOVF</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>TOVG</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>TOVH</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>TOVI</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>TOVJ</td>
+<td>ULONG</td>
+<td>Yes</td>
+<td>0</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-descriptions-5">9.3 Field Descriptions</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Name</strong></th>
+<th><strong>Summary</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VAL</td>
+<td>Value returned from process routine</td>
+<td>This field holds the value returned from the user defined process routine.</td>
+</tr>
+<tr class="even">
+<td>OVAL</td>
+<td>Old VAL</td>
+<td>Previous VAL, used to decide when to post events.</td>
+</tr>
+<tr class="odd">
+<td>SADR</td>
+<td><p>Subroutine</p>
+<p>Address</p></td>
+<td>The address of the routine called at process time.</td>
+</tr>
+<tr class="even">
+<td>OSAD</td>
+<td>Old SADR</td>
+<td>Previous SADR, used to decide when to post events.</td>
+</tr>
+<tr class="odd">
+<td>LFLG</td>
+<td>Link Flag</td>
+<td><p>Tells the record whether to read or ignore the SUBL link. If the value is READ, then the name of the subroutine to be called at process time is read from SUBL. If the value is IGNORE, the name of the subroutine is that currently held in</p>
+<p>SNAM.</p></td>
+</tr>
+<tr class="even">
+<td>EFLG</td>
+<td>Event Flag</td>
+<td><p>Tells the record when to post events on the output fields VALA,...,VALJ. If the value is NEVER, events are never posted. If the value is ALWAYS, events are posted everytime the record processes. If the value is ON CHANGE, events are posted when any element of an array changes value.</p>
+<p>Archiving and Value Change events are posted in each case.</p></td>
+</tr>
+<tr class="odd">
+<td>SUBL</td>
+<td>Subroutine Link</td>
+<td>Where to get the subroutine name from.</td>
+</tr>
+<tr class="even">
+<td>INAM</td>
+<td><p>Initialisation</p>
+<p>Routine</p></td>
+<td>This is the name of the initialisation routine to be called once, at iocInit.</td>
+</tr>
+<tr class="odd">
+<td>SNAM</td>
+<td>Process Routine</td>
+<td>This is the name of the routine to be called when the record processes. Note, this can be overwritten by the SUBL link, if LFLG is set to READ.</td>
+</tr>
+<tr class="even">
+<td>ONAM</td>
+<td>Process Routine</td>
+<td>Old process subroutine name.</td>
+</tr>
+<tr class="odd">
+<td>STYP</td>
+<td><p>Subroutine</p>
+<p>Symbol Type</p></td>
+<td>Filled in by record processing.</td>
+</tr>
+<tr class="even">
+<td>BRSV</td>
+<td>Severity for a subroutine return value less than 0.</td>
+<td>Specifies the Alarm severity.</td>
+</tr>
+<tr class="odd">
+<td>PREC</td>
+<td><p>Display</p>
+<p>Precision</p></td>
+<td>Specifies the number of decimal places with which to display the values of the fields VALA,...,VALJ.</td>
+</tr>
+<tr class="even">
+<td><p>INPA,...,</p>
+<p>INPJ</p></td>
+<td><p>Input Link A,...,</p>
+<p>Input Link J</p></td>
+<td>The input links from where the values of A,...,J are fetched during record processing.</td>
+</tr>
+<tr class="odd">
+<td><p>UFA,...,</p>
+<p>UFJ</p></td>
+<td><p>User Function A</p>
+<p>User Function J</p></td>
+<td>These are the names of functions which return the sizes of any user defined structures to be received in the input fields A,...,J.</td>
+</tr>
+<tr class="even">
+<td>A,...,J</td>
+<td>Input Fields</td>
+<td>The input fields which hold the scalar values or arrays fetched in across the input links INPA,...,INPJ.</td>
+</tr>
+<tr class="odd">
+<td><p>FTA,...,</p>
+<p>FTJ</p></td>
+<td><p>Field Type of A</p>
+<p>Field Type of J</p></td>
+<td>Field types of the input values. These can be CHAR, STRING, DOUBLE, LONG, etc.</td>
+</tr>
+<tr class="even">
+<td><strong>Name</strong></td>
+<td><strong>Summary</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="odd">
+<td><p>NOA...,</p>
+<p>NOJ</p></td>
+<td><p>Number of</p>
+<p>elements in A,..</p>
+<p>Number of elements in J</p></td>
+<td>The number of elements in each input field. Default is 1 (scalar value). An array is specified by setting this field to greater than 1.</td>
+</tr>
+<tr class="even">
+<td><p>OUTA,...,</p>
+<p>OUTJ</p></td>
+<td><p>Output Link A,..</p>
+<p>Output Link J</p></td>
+<td>The output links on which the scalars or arrays located at VALA,...,VALJ are placed during record processing.</td>
+</tr>
+<tr class="odd">
+<td><p>UFVA,...,</p>
+<p>UFVJ</p></td>
+<td><p>User Function VALA,...,</p>
+<p>User Function</p>
+<p>VALJ</p></td>
+<td>These are the names of functions which return the sizes of any user defined structures which are to passed out of the record from the fields VALA,...,VALJ.</td>
+</tr>
+<tr class="even">
+<td><p>VALA,..,</p>
+<p>VALJ</p></td>
+<td>Output Fields</td>
+<td>The output fields which hold the scalar values or arrays pushed out across the output links OUTA,...,OUTJ.</td>
+</tr>
+<tr class="odd">
+<td><p>FTVA,...,</p>
+<p>FTVJ</p></td>
+<td><p>Field Type of</p>
+<p>VALA</p>
+<p>Field Type of</p>
+<p>VALJ</p></td>
+<td>Field types of the output values. These can be CHAR, STRING, DOUBLE, LONG, etc.</td>
+</tr>
+<tr class="even">
+<td><p>OVLA,..,</p>
+<p>OVLJ</p></td>
+<td><p>Previous</p>
+<p>Outputs</p></td>
+<td>The previous values of the outputs. These are used to decide when to post events if EFLG is set to ON CHANGE.</td>
+</tr>
+<tr class="odd">
+<td><p>NOVA,...,</p>
+<p>NOVJ</p></td>
+<td><p>Number of elements in</p>
+<p>VALA</p>
+<p>Number of elements in</p>
+<p>VALJ</p></td>
+<td>The number of elements in each output field. Default is 1 (scalar value). An array is specified by setting this field to greater than 1.</td>
+</tr>
+<tr class="even">
+<td><p>TOVA,...,</p>
+<p>TOVJ</p></td>
+<td><p>Total Number of bytes in VALA</p>
+<p>Total Number of bytes in VALJ</p></td>
+<td>The total number of bytes in each output field. These are used internally by record processing and do not concern the user.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="record-support-routines-7"> 9.4 Record Support Routines</h3>
+<h4 id="init_record-7"> 9.4.1 init_record</h4>
+<blockquote>
+<p>This routine is called twice at <em>iocInit</em>. On the first call it does the following:</p>
+</blockquote>
+<ul>
+<li><p>Look for any user functions defined in the fields UFA-UFJ and UFVA-UFVJ. If they have been defined, call them to get the size of the structure which is to passed across the link. If they are not defined, no routine is called.</p></li>
+<li><p>Calloc sufficient space to hold the number of input scalars and/or arrays defined by the settings of the fields FTA-FTJ and NOA-NOJ. If a user function has been defined, calloc the space required by the multiple of the number of elements and size returned from the user function.</p></li>
+<li><p>Calloc sufficient space to hold the number of output scalars and/or arrays defined by the settings of the fields FTVA-FTVJ and NOVA-NOVJ. If a user function has been defined, calloc the space required by the multiple of the number of elements and size returned from the user function. For the output fields, also calloc space to hold the previous value of a field. This is required when the decision is made on whether or not to post events.</p></li>
+</ul>
+<blockquote>
+<p>On the second call, it does the following:</p>
+</blockquote>
+<ul>
+<li><p>Create the SUBL link.</p></li>
+<li><p>Create each input link.</p></li>
+<li><p>Create each output link.</p></li>
+<li><p>If the field INAM is set, look-up the address of the routine and call it.</p></li>
+<li><p>If the field LFLG is set to IGNORE and SNAM is defined, look-up the address of the process routine.</p></li>
+</ul>
+<h4 id="process-1">9.4.2 process</h4>
+<blockquote>
+<p>This routine implements the following algorithm:</p>
+</blockquote>
+<ul>
+<li><p>Set PACT to TRUE.</p></li>
+<li><p>If the field LFLG is set to READ, get the subroutine name from the SUBL link. If the name is not NULL and it is not the same as the previous subroutine name, lookup the subroutine address. Set the old subroutine name, ONAM, equal to the current name, SNAM.</p></li>
+<li><p>Fetch the values from the input links.</p></li>
+<li><p>Call the routine specified by SNAM.</p></li>
+<li><p>Set VAL equal to the return value from the routine specified by SNAM.</p></li>
+<li><p>Place the output values on the output links.</p></li>
+<li><p>Get the time of processing and put it into the timestamp field.</p></li>
+<li><p>If the subroutine address has changed, post a change-of-value event and a log event for the SADR field. If VAL has changed, post a change-of value and log event for this field. If EFLG is set to ALWAYS, post change-of-value and log events for every output field. If EFLG is set to ON CHANGE, post change-of-value and log events for every output field which has changed. In the case of an array, an event will be posted if any single element of the array has changed. If EFLG is set to NEVER, no change-of-value or log events are posted for the output fields.</p></li>
+<li><p>Process the record on the end of the forward link, if one exists.</p></li>
+<li><p>Set PACT to FALSE.</p></li>
+</ul>
+<p><strong>9.4.3 get_value</strong></p>
+<blockquote>
+<p>Fills in the values of struct <em>valueDes</em> so that they refer to VAL.</p>
+</blockquote>
+<h4 id="get_precision">9.4.4 get_precision</h4>
+<blockquote>
+<p>Sets the display precision to the value of PREC for any of the output fields VALA,..., VALJ. This routine could be called for any of these fields.</p>
+</blockquote>
+<h4 id="cvt_dbaddr-3"> 9.4.5 cvt_dbaddr</h4>
+<blockquote>
+<p>The purpose of this routine is to fill in the struct <em>dbAddr</em> for the field of the record for which it has been called. Typically, the number of elements in the field, the field type and the size of the field will be set in this routine. For arrays, this record support routine is essential.</p>
+</blockquote>
+<h4 id="get_array_info"> 9.4.6 get_array_info</h4>
+<blockquote>
+<p>This routine returns the current number of elements and the offset of the first value for an array. For this record, the offset field is always 0.</p>
+</blockquote>
+<p><strong>9.4.7 put_array_info</strong></p>
+<blockquote>
+<p>This routine is called after new values have been placed in an array.</p>
+</blockquote>
+<h4 id="special-3"> 9.4.8 special</h4>
+<blockquote>
+<p>This routine is called whenever the SNAM field changes. It is called twice, once before the change and once after. On the first call, the routine simply returns. On the second call, after SNAM has changed, it implements the following algorithm:</p>
+</blockquote>
+<ul>
+<li><p>If LFLG is set to IGNORE and SNAM is not NULL, then look-up the address of the routine specified by SNAM. Set the SADR field equal to the subroutine address.</p></li>
+<li><p>Post change-of-value and log events for the SADR field, if this has changed.</p></li>
+</ul>
+<h3 id="use-of-the-gensub-record"> 9.5 Use of the ‘GenSub’ Record</h3>
+<blockquote>
+<p>Two ‘GenSub’ records can be used to transfer data between one another. These records can be located in the same IOC or in separate IOC’s. The data can be a scalar of any type, an array, a user defined structure or an array of user defined structures.</p>
+<p>Let us name the ‘GenSub’ record which is sending data, record A, and the ‘GenSub’ record which is receiving the data, record B. There are some fields which must be set-up correctly in each record before the data transfer can occur without error. The output field types and the number of elements in the output fields of record A must match the input field types and number of elements in the input fields of record B. Thus, combining the two records is rather like a jigsaw. Let us take an example.</p>
+<p>If 5 doubles are to be passed from the VALA field of record A to the A field of record B, then the following settings are necessary:</p>
+<p>Record A should have: FTVA = DOUBLE, NOVA = 5.</p>
+<p>Record B should have: FTA = DOUBLE, NOA = 5.</p>
+</blockquote>
+<h3 id="use-of-user-defined-structures"> 9.6 Use of User Defined Structures</h3>
+<blockquote>
+<p>It is possible for the user to define a structure which is to be passed between two ‘GenSub’ records. As an example, let us imagine that the following structure needs to be transferred between the VALB field of record A and the B field of record B:</p>
+<p><em>struct pinfo {</em></p>
+<p><em>int age;</em></p>
+<p><em>char name[128];</em></p>
+<p><em>char posn[128]; double salary; };</em></p>
+<p>The user must supply a function which will return the size of this structure. An example, and template for such a function is given below:</p>
+<p><em>#include &lt;vxWorks.h&gt;</em></p>
+<p><em>#include &lt;types.h&gt;</em></p>
+<p><em>#include &lt;time.h&gt;</em></p>
+<p><em>#include &lt;stdlib.h&gt;</em></p>
+<p><em>#include &lt;stdioLib.h&gt;</em></p>
+<p><em>#include &lt;dbEvent.h&gt;</em></p>
+<p><em>#include &lt;dbDefs.h&gt;</em></p>
+<p><em>#include &lt;dbCommon.h&gt;</em></p>
+<p><em>#include &lt;recSup.h&gt;</em></p>
+<p><em>#include &lt;GenSubRecord.h&gt; #include &lt;pinfo.h&gt;</em></p>
+<p><em>long setup( struct GenSubRecord *pgsub )</em></p>
+<p><em>{</em></p>
+<p><em>return( sizeof(struct pinfo) ); }</em></p>
+<p>The user should set the following fields:</p>
+<p>Record A: UFVB:setup</p>
+<p>FTVB:CHAR</p>
+<p>NOVB: 1</p>
+<p>Record B: UFB: setup</p>
+<p>FTB: CHAR NOB: 1</p>
+<p>These settings indicate that a single structure, of the size of what is returned from <em>setup,</em> will be passed from VALB of record A to B of record B. Inside the process routine called from record B, the user should cast the B field as a pointer to the structure, thus:</p>
+<p>s<em>truct pinfo *ex; ex = (struct pinfo *)pgsub-&gt;b;</em></p>
+<p>The elements of the structure then become available to the routine. Note that the user is responsible for ensuring that the two ‘GenSub’ records, which may be in separate IOC’s, share identical layouts of the structure.</p>
+<p>It is also worth pointing out here, that because we are packing the structure into a stream of characters, character arrays within the structure are not limited to the 40 character limit imposed on strings for normal record fields. In this example, we have used character arrays dimensioned to 128.</p>
+<p>The total size of the structure must be less than 16kB. Internal ‘GenSub’ record code checks for this.</p>
+</blockquote>
+<h3 id="dynamically-changing-the-user-routine-called-during-record-processing"> 9.7 Dynamically Changing the User Routine called during Record Processing</h3>
+<blockquote>
+<p>The ‘GenSub’ record allows the user to dynamically change which routine is called when the record processes. This can be done in two ways:</p>
+</blockquote>
+<ul>
+<li><p>The LFLG field can be set to READ so that the name of the routine is read from the SUBL link. Thus, whatever is feeding this link can change the name of the routine before the ‘GenSub’ record is processed. In this case, the record looks in the symbol table for the symbol name whenever the name of routine fetched from the link changes.</p></li>
+<li><p>The LFLG field can be set to IGNORE. In this case, the rotine called during record processing is that specified in the SNAM property field. Under these conditions, the SNAM field can be changed by a Channel Access write to the SNAM field. Thus, during development work, when it is often required to run a modified version of the routine, it will no longer be a requirement to reboot the IOC and reload the database. A new routine will be called during record processing if the routine is loaded with the vxWorks <em>ld</em> command, and <em>cau</em> is used to put the name of the routine into the record’s SNAM field. After the SNAM field has been changed, the record automatically looks up the symbol name in the symbol table. Note that, if the same routine name is used, this is not a problem. The record finds the latest version of the code which has been loaded. Obviously, one needs to take care of the amount of memory which is used, if no <em>unld</em> command is ever used.</p></li>
+</ul>
+</body>
+</html>
