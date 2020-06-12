@@ -15,6 +15,7 @@ Here is some simple stuff.
 
    spe-c-g0070
    contents
+   ade
 
 
 Indices and tables
