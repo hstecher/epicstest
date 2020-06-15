@@ -5,6 +5,15 @@
 Welcome to epics example's test!
 ========================================
 
+
+.. toctree::
+   :hidden:
+   :caption: Community Resources
+
+   EPICS Website <https://epics-controls.org>
+   EPICS Documentation <https://docs.epics-controls.org>
+
+
 Here is some simple stuff.
 
     print 'hello'
@@ -12,6 +21,7 @@ Here is some simple stuff.
 
 .. toctree::
    :maxdepth: 1
+   :caption: Gemini Read-The-Docs Tests
 
    spe-c-g0070
    contents
